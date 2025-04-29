@@ -1,12 +1,17 @@
+import languagesData from "./languages.json";
+
 function Languages() {
-  // Need to use Form
   return (
     <div className="languages container">
       <h2>Languages</h2>
       <form>
         <label htmlFor="language">Language</label>
         <select name="language" id="language">
-          <option value="english">English</option>
+          {languagesData.languages.map((language) => (
+            <option key={language} value={language}>
+              {language}
+            </option>
+          ))}
         </select>
 
         <select name="languageLevel" id="languageLevel">
