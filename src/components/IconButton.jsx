@@ -1,4 +1,4 @@
-export default function IconButton({ type }) {
+export default function IconButton({ type, name }) {
   function buttonPath(string) {
     switch (string) {
       case "add":
@@ -28,7 +28,7 @@ export default function IconButton({ type }) {
 
   return (
     <>
-      <button type={type === "submit" ? "submit" : "button"}>
+      <button type={type === "submit" ? "submit" : "button"} className={name}>
         <img src={icon} alt={type} />
       </button>
     </>
