@@ -1,0 +1,17 @@
+button {
+  position: relative;
+  top: 70px;
+  background: none;
+  border: none;
+  size: 40px;
+  background-color: beige;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+img {
+  height: 40px;
+  width: auto;
+}

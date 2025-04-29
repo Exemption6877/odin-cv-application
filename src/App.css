@@ -11,10 +11,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
