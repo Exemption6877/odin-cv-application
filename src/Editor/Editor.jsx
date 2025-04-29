@@ -6,7 +6,7 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Languages from "./components/Languages";
 import Experience from "./components/Experience";
-import YearToYear from "./components/YearToYear";
+import "./Editor.css";
 
 function Editor() {
   return (

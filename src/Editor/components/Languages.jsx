@@ -8,8 +8,8 @@ function Languages() {
         <label htmlFor="language">Language</label>
         <select name="language" id="language">
           {languagesData.languages.map((language) => (
-            <option key={language} value={language}>
-              {language}
+            <option key={language.name} value={language.name}>
+              {language.flag} {language.name}
             </option>
           ))}
         </select>

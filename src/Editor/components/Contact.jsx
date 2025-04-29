@@ -1,4 +1,5 @@
 function Contact() {
+  // TODO: Set rules to these inputs
   return (
     <div className="contact container">
       <h2>Contact</h2>
