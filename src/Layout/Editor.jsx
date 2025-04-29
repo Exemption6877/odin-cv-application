@@ -6,15 +6,16 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Languages from "./components/Languages";
 import Experience from "./components/Experience";
-import Drag from "./components/drag";
+import Drag from "../Edit/Drag";
 import "./Editor.css";
 
 function Editor() {
   return (
     <div className="editor">
-      <Title />
       <div className="main container">
         <div className="left container">
+          <Title />
+
           <Contact />
           <Education />
           <Skills />
