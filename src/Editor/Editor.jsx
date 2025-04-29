@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Languages from "./components/Languages";
 import Experience from "./components/Experience";
+import YearToYear from "./components/YearToYear";
 
 function Editor() {
   return (
@@ -17,6 +18,7 @@ function Editor() {
           <Education />
           <Skills />
           <Languages />
+          <YearToYear />
         </div>
         <div className="right container">
           <Summary />
