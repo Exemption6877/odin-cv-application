@@ -1,0 +1,51 @@
+@import url(./index.css);
+
+.title {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 2px var(--border-color) solid;
+  border-top: 2px var(--border-color) solid;
+}
+
+.title > form > input {
+  height: 2rem;
+}
+
+.title > form {
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.heading {
+  width: 100%;
+  gap: 16px;
+}
+
+.heading > input {
+  height: 100px;
+  width: auto;
+  background-color: var(--secondary-color);
+  font-size: 4rem;
+  border: none;
+  color: var(--font-color);
+}
+
+.heading > input:nth-child(2) {
+  height: 50px;
+  font-size: 2rem;
+}
+
+.heading > input:nth-child(2)::placeholder {
+  font-size: 2rem;
+}
+
+.heading > input:focus {
+  outline: none;
+}
+
+.heading > input::placeholder {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--placeholder-color);
+}

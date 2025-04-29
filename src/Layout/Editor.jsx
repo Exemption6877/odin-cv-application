@@ -7,15 +7,14 @@ import Skills from "./components/Skills";
 import Languages from "./components/Languages";
 import Experience from "./components/Experience";
 import IconButton from "../components/IconButton";
-import "./Editor.css";
+import "../styles/Editor.css";
 
 function Editor() {
   return (
     <div className="editor">
+      <Title />
       <div className="main container">
         <div className="left container">
-          <Title />
-
           <Contact />
           <Education />
           <Skills />

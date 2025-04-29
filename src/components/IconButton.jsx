@@ -11,7 +11,7 @@ export default function IconButton({ type }) {
         return "./icons/delete.svg";
 
       case "submit":
-        return "./icons/submit.svg";
+        return "./icons/confirm.svg";
 
       case "edit":
         return "./icons/edit.svg";
@@ -28,7 +28,7 @@ export default function IconButton({ type }) {
 
   return (
     <>
-      <button>
+      <button type={type === "submit" ? "submit" : "button"}>
         <img src={icon} alt={type} />
       </button>
     </>
