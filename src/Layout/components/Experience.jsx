@@ -1,4 +1,4 @@
-import YearToYear from "../../Edit/components/YearToYear";
+import YearToYear from "../../components/YearToYear";
 
 function Experience() {
   return (

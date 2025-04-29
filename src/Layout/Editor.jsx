@@ -6,7 +6,7 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Languages from "./components/Languages";
 import Experience from "./components/Experience";
-import Drag from "../Edit/Drag";
+import IconButton from "../components/IconButton";
 import "./Editor.css";
 
 function Editor() {
@@ -26,7 +26,7 @@ function Editor() {
           <Experience />
         </div>
       </div>
-      <Drag />
+      <IconButton type={"add"} />
     </div>
   );
 }
