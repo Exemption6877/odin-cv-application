@@ -1,4 +1,4 @@
-import languagesData from "./languages.json";
+import languagesData from "../../data/languages.json";
 
 function Languages() {
   return (
