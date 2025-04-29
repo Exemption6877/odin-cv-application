@@ -15,6 +15,11 @@ function Title() {
     }
   }
 
+  function handleClick(e) {
+    e.preventDefault();
+    console.log("clicked");
+  }
+
   return (
     <div className="title container">
       <form>
@@ -24,6 +29,10 @@ function Title() {
             id="fullName"
             name="fullName"
             placeholder="John Doe"
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
             onChange={handleTyping}
             value={fullName}
           />
@@ -32,6 +41,10 @@ function Title() {
             id="position"
             name="position"
             placeholder="Bartender"
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
             onChange={handleTyping}
             value={position}
           />
