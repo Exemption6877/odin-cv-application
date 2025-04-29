@@ -1,3 +1,5 @@
+import YearToYear from "./YearToYear";
+
 function Education() {
   // Add ability to create additional entries
   // Add ability to create additional description
@@ -5,10 +7,7 @@ function Education() {
     <div className="education container">
       <h2>Education</h2>
       <form>
-        <label htmlFor="">First Year</label>
-        <input type="number" id="firstYear" name="firstYear" />
-        <label htmlFor="secondYear">Second Year</label>
-        <input type="number" id="secondYear" name="secondYear" />
+        <YearToYear from={"startEduYear"} to={"endEduYear"} />
         <label htmlFor="educationPlace">School/Name</label>
         <input type="text" id="educationPlace" name="educationPlace" />
         <label htmlFor="educationDescription">Description</label>
