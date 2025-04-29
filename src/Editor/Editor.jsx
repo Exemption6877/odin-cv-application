@@ -9,14 +9,20 @@ import Experience from "./components/Experience";
 
 function Editor() {
   return (
-    <div className="editor container">
+    <div className="editor">
       <Title />
-      <Contact />
-      <Summary />
-      <Education />
-      <Skills />
-      <Languages />
-      <Experience />
+      <div className="main container">
+        <div className="left container">
+          <Contact />
+          <Education />
+          <Skills />
+          <Languages />
+        </div>
+        <div className="right container">
+          <Summary />
+          <Experience />
+        </div>
+      </div>
     </div>
   );
 }

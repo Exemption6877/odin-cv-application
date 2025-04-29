@@ -2,6 +2,7 @@ function Languages() {
   // Need to use Form
   return (
     <div className="languages container">
+      <h2>Languages</h2>
       <label htmlFor="language">Language</label>
       <select name="language" id="language">
         <option value="english">English</option>

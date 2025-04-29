@@ -1,6 +1,7 @@
 function Experience() {
   return (
     <div className="experience container">
+      <h2>Experience</h2>
       <label htmlFor="companyName">Company Name</label>
       <input type="text" id="companyName" name="companyName" />
       <label htmlFor="companyPosition">Position</label>
