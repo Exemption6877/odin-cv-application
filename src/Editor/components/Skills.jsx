@@ -2,8 +2,11 @@ function Skills() {
   return (
     <div className="skills container">
       <h2>Skills</h2>
-      <label htmlFor="skill">Skills:</label>
-      <input type="text" id="skill" name="skill" />
+      <form>
+        <label htmlFor="skill">Skills:</label>
+        <input type="text" id="skill" name="skill" />
+        <input type="submit" />
+      </form>
     </div>
   );
 }

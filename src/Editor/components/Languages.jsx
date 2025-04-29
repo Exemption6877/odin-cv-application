@@ -3,19 +3,22 @@ function Languages() {
   return (
     <div className="languages container">
       <h2>Languages</h2>
-      <label htmlFor="language">Language</label>
-      <select name="language" id="language">
-        <option value="english">English</option>
-      </select>
+      <form>
+        <label htmlFor="language">Language</label>
+        <select name="language" id="language">
+          <option value="english">English</option>
+        </select>
 
-      <select name="languageLevel" id="languageLevel">
-        <option value="beginner">Beginner</option>
-        <option value="elementary">Elementary</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-        <option value="fluent">Fluent</option>
-        <option value="native">Native</option>
-      </select>
+        <select name="languageLevel" id="languageLevel">
+          <option value="beginner">Beginner</option>
+          <option value="elementary">Elementary</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+          <option value="fluent">Fluent</option>
+          <option value="native">Native</option>
+        </select>
+        <input type="submit" />
+      </form>
     </div>
   );
 }

@@ -44,7 +44,7 @@ body {
 }
 
 .right {
-  width: 80vw;
+  width: 70vw;
   background-color: aliceblue;
 }
 
@@ -52,4 +52,9 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }

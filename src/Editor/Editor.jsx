@@ -18,7 +18,6 @@ function Editor() {
           <Education />
           <Skills />
           <Languages />
-          <YearToYear />
         </div>
         <div className="right container">
           <Summary />
