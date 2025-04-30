@@ -29,9 +29,16 @@ h2 {
 h3 {
   color: var(--secondary-font-color);
   font-weight: 200px;
-  font-style: italic;
 }
 
 p {
   color: var(--secondary-font-color);
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  opacity: 0;
 }

@@ -5,6 +5,7 @@ import { useState } from "react";
 function Title() {
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
   function handleTyping(e) {
     const newValue = e.target.value;
 
@@ -17,40 +18,52 @@ function Title() {
 
   function handleClick(e) {
     e.preventDefault();
+    setIsClicked(true);
     console.log("clicked");
   }
 
   return (
     <div className="title container">
-      <form>
+      {isClicked ? (
         <div className="heading container">
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            placeholder="John Doe"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck="false"
-            onChange={handleTyping}
-            value={fullName}
-          />
-          <input
-            type="text"
-            id="position"
-            name="position"
-            placeholder="Bartender"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck="false"
-            onChange={handleTyping}
-            value={position}
-          />
+          <h1>{fullName}</h1>
+          <h3>{position}</h3>
         </div>
-        <IconButton type="submit" name={"title-submit"} />
-      </form>
+      ) : (
+        <form className={isClicked ? "hidden" : ""}>
+          <div className="heading container">
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="John Doe"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
+              onChange={handleTyping}
+              value={fullName}
+            />
+            <input
+              type="text"
+              id="position"
+              name="position"
+              placeholder="Bartender"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
+              onChange={handleTyping}
+              value={position}
+            />
+          </div>
+          <IconButton
+            type="submit"
+            name={"title-submit"}
+            onClick={handleClick}
+          />
+        </form>
+      )}
     </div>
   );
 }
