@@ -18,7 +18,7 @@
 .contact > form > input {
   border: none;
   border-bottom: 1px var(--border-color) inset;
-  text-align: center;
+  padding-left: 1rem;
 }
 
 .contact > form > input:focus {
@@ -26,7 +26,6 @@
 }
 
 .contact > form > input::placeholder {
-  text-align: center;
   font-size: 1rem;
   color: var(--placeholder-color);
 }
@@ -37,4 +36,19 @@
   align-items: center;
   margin: 8px;
   border-radius: 2ch;
+}
+
+.contact-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.contact-entry > p {
+  word-wrap: break-word;
+  max-width: 80%;
+  font-weight: 500;
+  font-size: 0.9rem;
 }

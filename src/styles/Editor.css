@@ -28,12 +28,12 @@
 }
 
 .left {
-  width: 20vw;
+  width: 25vw;
   border-right: 2px var(--border-color) solid;
 }
 
 .right {
-  width: 60vw;
+  width: 70vw;
 }
 
 .years {

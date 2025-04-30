@@ -6,7 +6,7 @@
   --placeholder-color: #c0c0c0;
   --border-color: #525252;
   --font-color: #4e4e4e;
-  --secondary-font-color: #bbbbbb;
+  --secondary-font-color: #9b9b9b;
 }
 
 body,
@@ -33,6 +33,10 @@ h3 {
 
 p {
   color: var(--secondary-font-color);
+}
+
+textarea {
+  resize: none;
 }
 
 button:hover {

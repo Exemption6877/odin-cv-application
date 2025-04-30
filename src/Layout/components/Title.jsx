@@ -4,6 +4,7 @@ import Alert from "../../components/alert";
 import { useState } from "react";
 
 export default function Title() {
+  // bundle both
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
   const [isClicked, setIsClicked] = useState(false);
@@ -52,7 +53,7 @@ export default function Title() {
           </div>
         </div>
       ) : (
-        <form className={isClicked ? "hidden" : ""}>
+        <form noValidate className={isClicked ? "hidden" : ""}>
           <div className="heading container">
             <input
               type="text"
