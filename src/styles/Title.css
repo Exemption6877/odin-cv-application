@@ -18,6 +18,7 @@
 }
 
 .heading {
+  display: block;
   width: 100%;
   height: 200px;
   justify-content: center;
@@ -27,7 +28,7 @@
 }
 
 .heading > input,
-.heading > h1 {
+.heading-text > h1 {
   height: 100px;
   width: auto;
   color: var(--font-color);
@@ -52,7 +53,7 @@
 }
 
 .heading > input:nth-child(2),
-.heading > h3 {
+.heading-text > h3 {
   height: 50px;
   font-size: 2rem;
   text-align: center;
@@ -67,7 +68,7 @@
   font-size: 2rem;
 }
 
-.title-submit {
+.title > button {
   background-color: var(--secondary-font-color);
   align-self: flex-end;
   margin-bottom: 24px;
@@ -76,8 +77,28 @@
   width: 50px;
   height: 50px;
   border-radius: 5ch;
+
+  position: absolute;
+  top: 50px;
+  top: 150px;
 }
 
-.title-submit > img {
+.title > button img {
   height: 100%;
+}
+
+.heading-text {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-edit {
+  visibility: hidden;
+}
+
+.title:hover .title-edit {
+  visibility: visible;
 }

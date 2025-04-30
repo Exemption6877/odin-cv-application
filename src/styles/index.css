@@ -35,10 +35,19 @@ p {
   color: var(--secondary-font-color);
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
 }
 
 .invisible {
   opacity: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

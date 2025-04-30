@@ -1,33 +1,55 @@
 import IconButton from "../../components/IconButton";
 import "../../styles/Title.css";
+import Alert from "../../components/alert";
 import { useState } from "react";
 
 function Title() {
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+  const [isAlerted, setIsAlerted] = useState(false);
+  function maxChars(size, string) {
+    return string.length === size;
+  }
+
   function handleTyping(e) {
     const newValue = e.target.value;
 
     if (e.target.id === "fullName") {
-      setFullName(newValue);
+      if (!maxChars(24, newValue)) {
+        setFullName(newValue);
+        setIsAlerted(false);
+      } else {
+        setIsAlerted(true);
+      }
     } else if (e.target.id === "position") {
-      setPosition(newValue.toUpperCase());
+      if (!maxChars(30, newValue)) {
+        setPosition(newValue.toUpperCase());
+        setIsAlerted(false);
+      } else {
+        setIsAlerted(true);
+      }
     }
   }
 
   function handleClick(e) {
     e.preventDefault();
-    setIsClicked(true);
-    console.log("clicked");
+    setIsAlerted(false);
+    setPosition(position.trim());
+    setFullName(fullName.trim());
+    setIsClicked(!isClicked);
   }
 
   return (
     <div className="title container">
+      {isAlerted ? <Alert message="Exceeding maximum line length" /> : null}
+
       {isClicked ? (
-        <div className="heading container">
-          <h1>{fullName}</h1>
-          <h3>{position}</h3>
+        <div className="heading row">
+          <div className="heading-text">
+            <h1>{fullName}</h1>
+            <h3>{position}</h3>
+          </div>
         </div>
       ) : (
         <form className={isClicked ? "hidden" : ""}>
@@ -57,12 +79,13 @@ function Title() {
               value={position}
             />
           </div>
-          <IconButton
-            type="submit"
-            name={"title-submit"}
-            onClick={handleClick}
-          />
         </form>
+      )}
+
+      {!isClicked ? (
+        <IconButton type="submit" name="title-submit" onClick={handleClick} />
+      ) : (
+        <IconButton type="edit" name="title-edit" onClick={handleClick} />
       )}
     </div>
   );

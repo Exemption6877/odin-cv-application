@@ -1,5 +1,7 @@
+import "../styles/Alert.css";
+
 export default function Alert({ message }) {
-  const icon = "./icons/toggle_edit.svg"; // temp placeholder
+  const icon = "./icons/alert.svg"; // temp placeholder
 
   return (
     <div className="alert">
