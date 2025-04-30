@@ -1,0 +1,40 @@
+@import url(./index.css);
+
+.contact {
+  padding: 16px;
+  border-bottom: 2px var(--border-color) solid;
+  width: 100%;
+  gap: 16px;
+}
+
+.contact > form {
+  gap: 8px;
+}
+
+.contact > form > label {
+  font-weight: 400;
+}
+
+.contact > form > input {
+  border: none;
+  border-bottom: 1px var(--border-color) inset;
+  text-align: center;
+}
+
+.contact > form > input:focus {
+  outline: none;
+}
+
+.contact > form > input::placeholder {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--placeholder-color);
+}
+
+.contact-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+  border-radius: 2ch;
+}

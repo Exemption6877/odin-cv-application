@@ -3,7 +3,7 @@ import "../../styles/Title.css";
 import Alert from "../../components/alert";
 import { useState } from "react";
 
-function Title() {
+export default function Title() {
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
   const [isClicked, setIsClicked] = useState(false);
@@ -90,5 +90,3 @@ function Title() {
     </div>
   );
 }
-
-export default Title;

@@ -1,4 +1,4 @@
-export default function IconButton({ type, name, onClick }) {
+export default function IconButton({ type, name, text = "", onClick }) {
   function buttonPath(string) {
     switch (string) {
       case "add":
@@ -34,6 +34,7 @@ export default function IconButton({ type, name, onClick }) {
         onClick={onClick}
       >
         <img src={icon} alt={type} />
+        {text}
       </button>
     </>
   );

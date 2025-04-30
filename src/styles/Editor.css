@@ -29,6 +29,7 @@
 
 .left {
   width: 20vw;
+  border-right: 2px var(--border-color) solid;
 }
 
 .right {
@@ -77,4 +78,3 @@ input {
 select {
   align-self: center;
 }
-

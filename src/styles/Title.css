@@ -62,6 +62,7 @@
 .heading > input:nth-child(2) {
   height: 50px;
   font-size: 2rem;
+  width: 100%;
 }
 
 .heading > input:nth-child(2)::placeholder {
