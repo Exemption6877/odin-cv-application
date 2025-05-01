@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function YearToYear({ from, to }) {
+function YearToYear({ from, to, className, dataId, onChange }) {
   const [isSelected, setIsSelected] = useState(false);
   const [changedYears, setChangedYears] = useState([]);
 
@@ -24,10 +24,18 @@ function YearToYear({ from, to }) {
   const displayYears = isSelected ? changedYears : toYears;
 
   return (
-    <>
+    <div className={className}>
       <label htmlFor="years">Years</label>
       <div className="years">
-        <select name={from} id={from} onChange={toYearChange}>
+        <select
+          name={from}
+          id={from}
+          data-id={dataId}
+          onChange={(e) => {
+            toYearChange(e);
+            onChange(e);
+          }}
+        >
           {years.map((year) => (
             <option key={year} value={year}>
               {year}
@@ -35,7 +43,14 @@ function YearToYear({ from, to }) {
           ))}
         </select>
         <p>-</p>
-        <select name={to} id={to}>
+        <select
+          name={to}
+          id={to}
+          data-id={dataId}
+          onChange={(e) => {
+            onChange(e);
+          }}
+        >
           {displayYears.map((year) => (
             <option key={year} value={year}>
               {year}
@@ -43,7 +58,7 @@ function YearToYear({ from, to }) {
           ))}
         </select>
       </div>
-    </>
+    </div>
   );
 }
 
