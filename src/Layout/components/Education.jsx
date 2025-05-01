@@ -1,8 +1,9 @@
+import "../../styles/Education.css";
 import YearToYear from "../../components/YearToYear";
+import IconButton from "../../components/IconButton";
+import { useState } from "react";
 
 function Education() {
-  // Add ability to create additional entries
-  // Add ability to create additional description
   return (
     <div className="education container">
       <h2>Education</h2>
@@ -16,8 +17,7 @@ function Education() {
           name="educationDescription"
         />
         <YearToYear from={"startEduYear"} to={"endEduYear"} />
-
-        <input type="submit" />
+        <IconButton type="submit" name="education-submit" text="Submit" />
       </form>
     </div>
   );

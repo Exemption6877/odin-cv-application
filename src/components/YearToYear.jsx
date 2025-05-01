@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 function YearToYear({ from, to }) {
+  const [isSelected, setIsSelected] = useState(false);
+  const [changedYears, setChangedYears] = useState([]);
+
   const years = [];
   const currentYear = new Date().getFullYear();
 
@@ -7,11 +12,22 @@ function YearToYear({ from, to }) {
   }
 
   const toYears = ["Present", ...years];
+
+  function toYearChange(e) {
+    setIsSelected(true);
+    const result = toYears.filter((year) =>
+      year === "Present" ? true : year >= e.target.value
+    );
+    setChangedYears(result);
+  }
+
+  const displayYears = isSelected ? changedYears : toYears;
+
   return (
     <>
       <label htmlFor="years">Years</label>
       <div className="years">
-        <select name={from} id={from}>
+        <select name={from} id={from} onChange={toYearChange}>
           {years.map((year) => (
             <option key={year} value={year}>
               {year}
@@ -20,7 +36,7 @@ function YearToYear({ from, to }) {
         </select>
         <p>-</p>
         <select name={to} id={to}>
-          {toYears.map((year) => (
+          {displayYears.map((year) => (
             <option key={year} value={year}>
               {year}
             </option>

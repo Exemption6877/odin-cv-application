@@ -1,0 +1,7 @@
+@import url(./index.css);
+
+.education {
+  border-bottom: 2px var(--border-color) solid;
+  padding-bottom: 8px;
+  width: 100%;
+}
