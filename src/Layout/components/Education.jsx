@@ -40,6 +40,14 @@ function Education() {
       const entryId = id.replace("education-edit-", "");
       setIsEditing(entryId);
       console.log(entryId);
+    } else if (value === "delete") {
+      const entryId = id.replace("education-edit-", "");
+      console.log(entryId);
+      setEntries(
+        entries.filter((entry) => {
+          entry.id !== entryId;
+        })
+      );
     }
   }
 
@@ -100,6 +108,7 @@ function Education() {
               type="delete"
               name="education-delete"
               id={`education-delete-${entry.id}`}
+              onClick={handleClick}
             />
           </div>
         )
