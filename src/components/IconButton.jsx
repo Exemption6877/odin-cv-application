@@ -1,4 +1,10 @@
-export default function IconButton({ type, name, text = "", onClick }) {
+export default function IconButton({
+  type,
+  name,
+  text = "",
+  onClick,
+  id = "",
+}) {
   function buttonPath(string) {
     switch (string) {
       case "add":
@@ -32,6 +38,8 @@ export default function IconButton({ type, name, text = "", onClick }) {
         type={type === "submit" ? "submit" : "button"}
         className={name}
         onClick={onClick}
+        id={id}
+        value={type}
       >
         <img src={icon} alt={type} />
         {text}

@@ -31,6 +31,7 @@ function YearToYear({ from, to, className, dataId, onChange }) {
           name={from}
           id={from}
           data-id={dataId}
+          value="1950"
           onChange={(e) => {
             toYearChange(e);
             onChange(e);
@@ -47,6 +48,7 @@ function YearToYear({ from, to, className, dataId, onChange }) {
           name={to}
           id={to}
           data-id={dataId}
+          value="Present"
           onChange={(e) => {
             onChange(e);
           }}
