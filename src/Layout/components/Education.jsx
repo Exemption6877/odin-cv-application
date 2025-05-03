@@ -15,7 +15,9 @@ function Education() {
   ]);
 
   const [isClicked, setIsClicked] = useState(false);
-  const [isEditing, setIsEditing] = useState(entries[0].id);
+  const [isEditing, setIsEditing] = useState(
+    entries.length > 0 ? entries[0].id : null
+  );
 
   function handleTyping(e) {
     const inputId = e.target.dataset.id;
@@ -41,19 +43,30 @@ function Education() {
       setIsEditing(entryId);
       console.log(entryId);
     } else if (value === "delete") {
-      const entryId = id.replace("education-edit-", "");
-      console.log(entryId);
-      setEntries(
-        entries.filter((entry) => {
-          entry.id !== entryId;
-        })
-      );
+      const entryId = id.replace("education-delete-", "");
+      setIsEditing(null);
+      setEntries(entries.filter((entry) => entry.id !== entryId));
+    } else if (value === "add") {
+      const newId = crypto.randomUUID();
+      console.log(newId);
+      setEntries([
+        ...entries,
+        {
+          id: newId,
+          eduName: "",
+          eduDescription: "",
+          eduStart: "",
+          eduEnd: "",
+        },
+      ]);
+      setIsEditing(newId);
     }
   }
 
   return (
     <div className="education container">
       <h2>Education</h2>
+      {entries.length === 0 ? <p>No entries.</p> : null}
       {entries.map((entry) =>
         isEditing === entry.id ? (
           <div key={entry.id} className={`edit ${entry.id}`}>
@@ -113,45 +126,14 @@ function Education() {
           </div>
         )
       )}
-      <IconButton type="add" name="education-add" text="Add new entry" />
+      <IconButton
+        type="add"
+        name="education-add"
+        text="Add new entry"
+        onClick={handleClick}
+      />
     </div>
   );
 }
 
 export default Education;
-
-// //
-// <form key={entries[0].id}>
-// <YearToYear
-//   from={"eduStart"}
-//   to={"eduEnd"}
-//   dataId={entries[0].id}
-//   onChange={handleTyping}
-// />
-// <label htmlFor="educationPlace">School/Name</label>
-// <input
-//   type="text"
-//   id="eduName"
-//   name="eduName"
-//   value={entries[0].eduName}
-//   data-id={entries[0].id}
-//   onChange={handleTyping}
-// />
-// <label htmlFor="educationDescription">Description</label>
-// <input
-//   type="text"
-//   id="eduDescription"
-//   name="eduDescription"
-//   value={entries[0].eduDescription}
-//   data-id={entries[0].id}
-//   onChange={handleTyping}
-// />
-
-// <IconButton
-//   type="submit"
-//   name="education-submit"
-//   text="Submit"
-//   value="submit"
-//   onClick={handleClick}
-// />
-// </form>
