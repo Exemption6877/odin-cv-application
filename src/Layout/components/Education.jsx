@@ -37,18 +37,16 @@ function Education() {
 
     if (value === "submit") {
       setIsClicked(!isClicked);
-      setIsEditing(false);
+      setIsEditing(null);
     } else if (value === "edit") {
       const entryId = id.replace("education-edit-", "");
       setIsEditing(entryId);
-      console.log(entryId);
     } else if (value === "delete") {
       const entryId = id.replace("education-delete-", "");
       setIsEditing(null);
       setEntries(entries.filter((entry) => entry.id !== entryId));
     } else if (value === "add") {
       const newId = crypto.randomUUID();
-      console.log(newId);
       setEntries([
         ...entries,
         {
@@ -126,12 +124,14 @@ function Education() {
           </div>
         )
       )}
-      <IconButton
-        type="add"
-        name="education-add"
-        text="Add new entry"
-        onClick={handleClick}
-      />
+      {isEditing === null ? (
+        <IconButton
+          type="add"
+          name="education-add"
+          text="Add new entry"
+          onClick={handleClick}
+        />
+      ) : null}
     </div>
   );
 }
