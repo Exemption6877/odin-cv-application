@@ -1,4 +1,5 @@
 import IconButton from "../../components/IconButton";
+import getInputAttributes from "../../utils/inputAttributes";
 import "../../styles/Title.css";
 import Alert from "../../components/alert";
 import { useState } from "react";
@@ -60,24 +61,18 @@ export default function Title() {
               id="fullName"
               name="fullName"
               placeholder="John Doe"
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
               onChange={handleTyping}
               value={fullName}
+              {...getInputAttributes()}
             />
             <input
               type="text"
               id="position"
               name="position"
               placeholder="Bartender"
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
               onChange={handleTyping}
               value={position}
+              {...getInputAttributes()}
             />
           </div>
         </form>
