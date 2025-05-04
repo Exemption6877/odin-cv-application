@@ -51,6 +51,7 @@ function Skills() {
   }
   return (
     <div className="skills container">
+      <h2>Skills</h2>
       <ul>
         {entries.length === 0 ? <p>No entries.</p> : null}
         {entries.map((entry) => (
