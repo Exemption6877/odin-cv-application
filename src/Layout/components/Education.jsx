@@ -9,8 +9,8 @@ function Education() {
       id: crypto.randomUUID(),
       eduName: "",
       eduDescription: "",
-      eduStart: "",
-      eduEnd: "",
+      eduStart: "1950",
+      eduEnd: "Present",
     },
   ]);
 
@@ -51,10 +51,10 @@ function Education() {
         ...entries,
         {
           id: newId,
-          eduName: "",
-          eduDescription: "",
-          eduStart: "",
-          eduEnd: "",
+          eduName: "Empty",
+          eduDescription: "Empty",
+          eduStart: "1950",
+          eduEnd: "Present",
         },
       ]);
       setIsEditing(newId);
