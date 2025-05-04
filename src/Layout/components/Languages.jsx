@@ -32,7 +32,11 @@ function Languages() {
     const { value, id } = e.currentTarget;
 
     if (value === "submit") {
-      setIsEditing(null);
+      const currentEntry = entries.find((entry) => entry.id === isEditing);
+
+      currentEntry.language.length > 0 && currentEntry.level.length > 0
+        ? setIsEditing(null)
+        : console.log("Please choose both language and level");
     } else if (value === "delete") {
       const entryId = id.replace("languages-delete-", "");
       setIsEditing(null);
