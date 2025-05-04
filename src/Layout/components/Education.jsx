@@ -70,11 +70,16 @@ function Education() {
           <div key={entry.id} className={`edit ${entry.id}`}>
             <form>
               <YearToYear
-                from={"eduStart"}
-                to={"eduEnd"}
+                from="eduStart"
+                to="eduEnd"
                 dataId={entry.id}
                 onChange={handleTyping}
+                values={{
+                  eduStart: entry.eduStart,
+                  eduEnd: entry.eduEnd,
+                }}
               />
+
               <label htmlFor="educationPlace">School/Name</label>
               <input
                 type="text"

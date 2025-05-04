@@ -64,76 +64,80 @@ function Languages() {
 
       {entries.length === 0 ? <p>No entries.</p> : null}
 
-      <ul>
-        {entries.map((entry) => (
-          <ul key={entry.id} className="language">
-            {isEditing === entry.id ? (
-              <form>
-                <label htmlFor="language">Language</label>
-                <select
-                  name="language"
-                  id="language"
-                  data-id={entry.id}
-                  onChange={handleTyping}
-                >
-                  <option value="" disabled selected hidden>
-                    Please choose a language
+      {entries.map((entry) => (
+        <div key={entry.id} className="language">
+          {isEditing === entry.id ? (
+            <form>
+              <label htmlFor="language">Language</label>
+              <select
+                name="language"
+                id="language"
+                data-id={entry.id}
+                value={entry.language}
+                onChange={handleTyping}
+              >
+                <option disabled hidden>
+                  Please choose a language
+                </option>
+                {languagesData.languages.map((language) => (
+                  <option key={language.name} value={language.name}>
+                    {language.flag} {language.name}
                   </option>
-                  {languagesData.languages.map((language) => (
-                    <option key={language.name} value={language.name}>
-                      {language.flag} {language.name}
-                    </option>
-                  ))}
-                </select>
+                ))}
+              </select>
 
-                <select
-                  name="level"
-                  id="level"
-                  data-id={entry.id}
-                  onChange={handleTyping}
-                >
-                  <option value="" disabled selected hidden>
-                    level
-                  </option>
-                  <option value="beginner">Beginner</option>
-                  <option value="elementary">Elementary</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="advanced">Advanced</option>
-                  <option value="fluent">Fluent</option>
-                  <option value="native">Native</option>
-                </select>
+              <label htmlFor="level">Level</label>
+              <select
+                name="level"
+                id="level"
+                data-id={entry.id}
+                value={entry.level}
+                onChange={handleTyping}
+              >
+                <option disabled hidden>
+                  Please choose a level
+                </option>
+                <option value="beginner">Beginner</option>
+                <option value="elementary">Elementary</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+                <option value="fluent">Fluent</option>
+                <option value="native">Native</option>
+              </select>
 
-                <IconButton
-                  type="submit"
-                  name="languages-submit"
-                  text="Submit"
-                  onClick={handleClick}
-                />
-              </form>
-            ) : (
-              <>
+              <IconButton
+                type="submit"
+                name="languages-submit"
+                text="Submit"
+                value="submit"
+                onClick={handleClick}
+              />
+            </form>
+          ) : (
+            <>
+              <ul>
                 <li>
                   {entry.language} — {entry.level}
                 </li>
-                <IconButton
-                  type="edit"
-                  name="languages-edit"
-                  id={`languages-edit-${entry.id}`}
-                  value="edit"
-                  onClick={handleClick}
-                />
-                <IconButton
-                  type="delete"
-                  name="languages-delete"
-                  id={`languages-delete-${entry.id}`}
-                  value="delete"
-                  onClick={handleClick}
-                />
-              </>
-            )}
-          </ul>
-        ))}
-      </ul>
+              </ul>
+              <IconButton
+                type="edit"
+                name="languages-edit"
+                id={`languages-edit-${entry.id}`}
+                value="edit"
+                onClick={handleClick}
+              />
+              <IconButton
+                type="delete"
+                name="languages-delete"
+                id={`languages-delete-${entry.id}`}
+                value="delete"
+                onClick={handleClick}
+              />
+            </>
+          )}
+        </div>
+      ))}
 
       {isEditing === null ? (
         <IconButton
