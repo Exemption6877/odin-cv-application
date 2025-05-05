@@ -14,6 +14,7 @@ export default function Title() {
 
   const [isEditing, setIsEditing] = useState(true);
   const [isAlerted, setIsAlerted] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   function maxChars(size, string) {
     return string.length > size;
@@ -21,13 +22,12 @@ export default function Title() {
 
   function handleTyping(e) {
     const { id, value } = e.target;
-
+    setErrors([]);
     if (maxChars(MAXCHARS, value)) {
-      setIsAlerted(true);
+      const error = `You can only enter up to ${MAXCHARS} characters.`;
+      setErrors([error]);
       return;
     }
-
-    setIsAlerted(false);
 
     const updatedValue = id === "position" ? value.toUpperCase() : value;
     setEntry((prev) => ({ ...prev, [id]: updatedValue }));
@@ -36,20 +36,33 @@ export default function Title() {
   function handleClick(e) {
     e.preventDefault();
 
+    const currentErrors = [];
+
+    if (maxChars(MAXCHARS, entry.fullname)) {
+      currentErrors.push(`You can only enter up to ${MAXCHARS} characters.`);
+    }
+
+    if (entry.fullname.trim().length === 0) {
+      currentErrors.push(`Please enter your name.`);
+    }
+
+    if (currentErrors.length > 0) {
+      setErrors(currentErrors);
+      return;
+    }
+
+    setErrors([]);
     setEntry({
       fullname: entry.fullname.trim(),
       position: entry.position.trim(),
     });
 
-    setIsAlerted(false);
     setIsEditing(!isEditing);
   }
 
   return (
     <div className="title container">
-      {isAlerted ? (
-        <Alert message={`You can only enter up to ${MAXCHARS} characters.`} />
-      ) : null}
+      {errors.length > 0 ? <Alert message={errors[0]} /> : null}
 
       {isEditing ? (
         <form noValidate>
