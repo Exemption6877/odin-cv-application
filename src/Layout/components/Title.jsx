@@ -13,7 +13,6 @@ export default function Title() {
   });
 
   const [isEditing, setIsEditing] = useState(true);
-  const [isAlerted, setIsAlerted] = useState(false);
   const [errors, setErrors] = useState([]);
 
   function maxChars(size, string) {
