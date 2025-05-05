@@ -1,8 +1,8 @@
-import "../../styles/Contact.css";
+import Alert from "../../components/alert";
+import getInputAttributes from "../../utils/inputAttributes";
 import IconButton from "../../components/IconButton";
 import { useState } from "react";
-import getInputAttributes from "../../utils/inputAttributes";
-import Alert from "../../components/alert";
+import "../../styles/Contact.css";
 
 export default function Contact() {
   const [entry, setEntry] = useState({
