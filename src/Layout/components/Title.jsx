@@ -55,6 +55,7 @@ export default function Title() {
         <form noValidate>
           <input
             type="text"
+            className="fullname"
             id="fullname"
             name="fullname"
             placeholder="John Doe"
@@ -64,9 +65,10 @@ export default function Title() {
           />
           <input
             type="text"
+            className="position"
             id="position"
             name="position"
-            placeholder="Bartender"
+            placeholder="BARTENDER"
             onChange={handleTyping}
             value={entry.position}
             {...getInputAttributes()}
@@ -74,8 +76,8 @@ export default function Title() {
         </form>
       ) : (
         <>
-          <h1>{entry.fullname}</h1>
-          <h3>{entry.position}</h3>
+          <h1 className="fullname">{entry.fullname}</h1>
+          <h3 className="position">{entry.position}</h3>
         </>
       )}
 
