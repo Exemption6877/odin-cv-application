@@ -42,7 +42,7 @@ function YearToYear({ from, to, className, dataId, onChange }) {
             </option>
           ))}
         </select>
-        <p>-</p>
+
         <select
           name={to}
           id={to}

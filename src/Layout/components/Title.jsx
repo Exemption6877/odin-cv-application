@@ -71,8 +71,8 @@ export default function Title() {
             id="fullname"
             name="fullname"
             placeholder="John Doe"
-            onChange={handleTyping}
             value={entry.fullname}
+            onChange={handleTyping}
             {...getInputAttributes()}
           />
           <input
@@ -81,8 +81,8 @@ export default function Title() {
             id="position"
             name="position"
             placeholder="BARTENDER"
-            onChange={handleTyping}
             value={entry.position}
+            onChange={handleTyping}
             {...getInputAttributes()}
           />
         </form>

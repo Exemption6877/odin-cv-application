@@ -1,6 +1,7 @@
 import "../../styles/Education.css";
 import YearToYear from "../../components/YearToYear";
 import IconButton from "../../components/IconButton";
+import getInputAttributes from "../../utils/inputAttributes";
 import { useState } from "react";
 
 function Education() {
@@ -9,55 +10,59 @@ function Education() {
       id: crypto.randomUUID(),
       eduName: "",
       eduDescription: "",
-      eduStart: "1950",
-      eduEnd: "Present",
+      eduStart: "",
+      eduEnd: "",
     },
   ]);
 
-  const [isClicked, setIsClicked] = useState(false);
   const [isEditing, setIsEditing] = useState(
     entries.length > 0 ? entries[0].id : null
   );
 
   function handleTyping(e) {
+    const { id, value } = e.target;
     const inputId = e.target.dataset.id;
-    const inputName = e.target.id;
-    const value = e.target.value;
 
     setEntries(
-      entries.map((entry) => {
-        return entry.id === inputId ? { ...entry, [inputName]: value } : entry;
-      })
+      entries.map((entry) =>
+        entry.id === inputId ? { ...entry, [id]: value } : entry
+      )
     );
   }
 
   function handleClick(e) {
     e.preventDefault();
     const { value, id } = e.currentTarget;
+    let entryId;
+    let newId;
 
-    if (value === "submit") {
-      setIsClicked(!isClicked);
-      setIsEditing(null);
-    } else if (value === "edit") {
-      const entryId = id.replace("education-edit-", "");
-      setIsEditing(entryId);
-    } else if (value === "delete") {
-      const entryId = id.replace("education-delete-", "");
-      setIsEditing(null);
-      setEntries(entries.filter((entry) => entry.id !== entryId));
-    } else if (value === "add") {
-      const newId = crypto.randomUUID();
-      setEntries([
-        ...entries,
-        {
-          id: newId,
-          eduName: "Empty",
-          eduDescription: "Empty",
-          eduStart: "1950",
-          eduEnd: "Present",
-        },
-      ]);
-      setIsEditing(newId);
+    switch (value) {
+      case "submit":
+        setIsEditing(false);
+        break;
+      case "edit":
+        entryId = id.replace("education-edit-", "");
+        setIsEditing(entryId);
+        break;
+      case "delete":
+        entryId = id.replace("education-delete-", "");
+        setIsEditing(false);
+        setEntries(entries.filter((entry) => entry.id !== entryId));
+        break;
+      case "add":
+        newId = crypto.randomUUID();
+        setEntries([
+          ...entries,
+          {
+            id: newId,
+            eduName: "",
+            eduDescription: "",
+            eduStart: "",
+            eduEnd: "",
+          },
+        ]);
+        setIsEditing(newId);
+        break;
     }
   }
 
@@ -67,17 +72,19 @@ function Education() {
       {entries.length === 0 ? <p>No entries.</p> : null}
       {entries.map((entry) =>
         isEditing === entry.id ? (
-          <div key={entry.id} className={`edit ${entry.id}`}>
+          <div key={entry.id} className={`edit-education ${entry.id}`}>
             <form>
               <YearToYear
                 from="eduStart"
                 to="eduEnd"
-                dataId={entry.id}
+                className="edu-years"
                 onChange={handleTyping}
                 values={{
                   eduStart: entry.eduStart,
                   eduEnd: entry.eduEnd,
                 }}
+                dataId={entry.id}
+                {...getInputAttributes()}
               />
 
               <label htmlFor="educationPlace">School/Name</label>
@@ -86,8 +93,10 @@ function Education() {
                 id="eduName"
                 name="eduName"
                 value={entry.eduName}
-                data-id={entry.id}
                 onChange={handleTyping}
+                data-id={entry.id}
+                placeholder="Harvard University"
+                {...getInputAttributes()}
               />
               <label htmlFor="educationDescription">Description</label>
               <input
@@ -96,7 +105,9 @@ function Education() {
                 name="eduDescription"
                 value={entry.eduDescription}
                 data-id={entry.id}
+                placeholder="Bachelor of Science in Physics"
                 onChange={handleTyping}
+                {...getInputAttributes()}
               />
               <IconButton
                 type="submit"
@@ -129,7 +140,7 @@ function Education() {
           </div>
         )
       )}
-      {isEditing === null ? (
+      {!isEditing ? (
         <IconButton
           type="add"
           name="education-add"

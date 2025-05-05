@@ -99,8 +99,8 @@ export default function Contact() {
             id="phone"
             name="phone"
             value={entry.phone}
-            onChange={handleTyping}
             placeholder="+123456789"
+            onChange={handleTyping}
             {...getInputAttributes()}
           />
 
@@ -110,8 +110,8 @@ export default function Contact() {
             id="email"
             name="email"
             value={entry.email}
-            onChange={handleTyping}
             placeholder="user@mail.com"
+            onChange={handleTyping}
             {...getInputAttributes()}
           />
 
@@ -121,8 +121,8 @@ export default function Contact() {
             id="location"
             name="location"
             value={entry.location}
-            onChange={handleTyping}
             placeholder="Bergen, NY, United States"
+            onChange={handleTyping}
             {...getInputAttributes()}
           />
 
@@ -132,8 +132,8 @@ export default function Contact() {
             id="website"
             name="website"
             value={entry.website}
-            onChange={handleTyping}
             placeholder="www.example.com"
+            onChange={handleTyping}
             {...getInputAttributes()}
           />
 
