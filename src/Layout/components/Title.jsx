@@ -1,84 +1,85 @@
-import IconButton from "../../components/IconButton";
-import getInputAttributes from "../../utils/inputAttributes";
-import "../../styles/Title.css";
 import Alert from "../../components/alert";
+import getInputAttributes from "../../utils/inputAttributes";
+import IconButton from "../../components/IconButton";
 import { useState } from "react";
+import "../../styles/Title.css";
 
 export default function Title() {
-  // bundle both
-  const [fullName, setFullName] = useState("");
-  const [position, setPosition] = useState("");
-  const [isClicked, setIsClicked] = useState(false);
+  const MAXCHARS = 32;
+
+  const [entry, setEntry] = useState({
+    fullname: "",
+    position: "",
+  });
+
+  const [isEditing, setIsEditing] = useState(true);
   const [isAlerted, setIsAlerted] = useState(false);
+
   function maxChars(size, string) {
-    return string.length === size;
+    return string.length > size;
   }
 
   function handleTyping(e) {
-    const newValue = e.target.value;
+    const { id, value } = e.target;
 
-    if (e.target.id === "fullName") {
-      if (!maxChars(24, newValue)) {
-        setFullName(newValue);
-        setIsAlerted(false);
-      } else {
-        setIsAlerted(true);
-      }
-    } else if (e.target.id === "position") {
-      if (!maxChars(30, newValue)) {
-        setPosition(newValue.toUpperCase());
-        setIsAlerted(false);
-      } else {
-        setIsAlerted(true);
-      }
+    if (maxChars(MAXCHARS, value)) {
+      setIsAlerted(true);
+      return;
     }
+
+    setIsAlerted(false);
+
+    const updatedValue = id === "position" ? value.toUpperCase() : value;
+    setEntry((prev) => ({ ...prev, [id]: updatedValue }));
   }
 
   function handleClick(e) {
     e.preventDefault();
+
+    setEntry({
+      fullname: entry.fullname.trim(),
+      position: entry.position.trim(),
+    });
+
     setIsAlerted(false);
-    setPosition(position.trim());
-    setFullName(fullName.trim());
-    setIsClicked(!isClicked);
+    setIsEditing(!isEditing);
   }
 
   return (
     <div className="title container">
-      {isAlerted ? <Alert message="Exceeding maximum line length" /> : null}
+      {isAlerted ? (
+        <Alert message={`You can only enter up to ${MAXCHARS} characters.`} />
+      ) : null}
 
-      {isClicked ? (
-        <div className="heading row">
-          <div className="heading-text">
-            <h1>{fullName}</h1>
-            <h3>{position}</h3>
-          </div>
-        </div>
-      ) : (
-        <form noValidate className={isClicked ? "hidden" : ""}>
-          <div className="heading container">
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              placeholder="John Doe"
-              onChange={handleTyping}
-              value={fullName}
-              {...getInputAttributes()}
-            />
-            <input
-              type="text"
-              id="position"
-              name="position"
-              placeholder="Bartender"
-              onChange={handleTyping}
-              value={position}
-              {...getInputAttributes()}
-            />
-          </div>
+      {isEditing ? (
+        <form noValidate>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="John Doe"
+            onChange={handleTyping}
+            value={entry.fullname}
+            {...getInputAttributes()}
+          />
+          <input
+            type="text"
+            id="position"
+            name="position"
+            placeholder="Bartender"
+            onChange={handleTyping}
+            value={entry.position}
+            {...getInputAttributes()}
+          />
         </form>
+      ) : (
+        <>
+          <h1>{entry.fullname}</h1>
+          <h3>{entry.position}</h3>
+        </>
       )}
 
-      {!isClicked ? (
+      {isEditing ? (
         <IconButton type="submit" name="title-submit" onClick={handleClick} />
       ) : (
         <IconButton type="edit" name="title-edit" onClick={handleClick} />
