@@ -2,6 +2,7 @@ import "../../styles/Education.css";
 import YearToYear from "../../components/YearToYear";
 import IconButton from "../../components/IconButton";
 import getInputAttributes from "../../utils/inputAttributes";
+import Alert from "../../components/alert";
 import { useState } from "react";
 
 function Education() {
@@ -18,6 +19,8 @@ function Education() {
   const [isEditing, setIsEditing] = useState(
     entries.length > 0 ? entries[0].id : null
   );
+
+  const [errors, setErrors] = useState([]);
 
   function handleTyping(e) {
     const { id, value } = e.target;
@@ -36,8 +39,23 @@ function Education() {
     let entryId;
     let newId;
 
+    const currentErrors = [];
+    const current = entries.find((entry) => entry.id === isEditing);
+
+    if (current && current.eduName.length === 0) {
+      currentErrors.push("School or institution name is required.");
+    }
+
+    if (currentErrors.length > 0) {
+      setErrors(currentErrors);
+      return;
+    }
+
+    setErrors([]);
+
     switch (value) {
       case "submit":
+        setErrors([]);
         setIsEditing(false);
         break;
       case "edit":
@@ -70,6 +88,8 @@ function Education() {
     <div className="education container">
       <h2>Education</h2>
       {entries.length === 0 ? <p>No entries.</p> : null}
+      {errors.length > 0 ? <Alert message={errors[0]} /> : null}
+
       {entries.map((entry) =>
         isEditing === entry.id ? (
           <div key={entry.id} className={`edit-education ${entry.id}`}>
@@ -126,11 +146,18 @@ function Education() {
               value="edit"
               onClick={handleClick}
             />
-            <h2>
-              {entry.eduStart} - {entry.eduEnd}
-            </h2>
+            {entry.eduStart.length > 0 ? (
+              <h2>
+                {entry.eduStart} - {entry.eduEnd}
+              </h2>
+            ) : null}
+
             <h2>{entry.eduName}</h2>
-            <p>{entry.eduDescription}</p>
+
+            {entry.eduDescription.length > 0 ? (
+              <p>{entry.eduDescription}</p>
+            ) : null}
+
             <IconButton
               type="delete"
               name="education-delete"
