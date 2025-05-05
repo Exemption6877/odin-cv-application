@@ -64,7 +64,7 @@ input.position {
 }
 
 .title-submit:hover img {
-  animation: rotate 1.5s ease-in-out 1 reverse;
+  animation: rotate 0.5s ease-in-out 1 reverse;
 }
 
 .title button {

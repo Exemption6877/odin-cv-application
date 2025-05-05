@@ -5,182 +5,104 @@ import { useState } from "react";
 export default function Contact() {
   // TODO: Set rules to these inputs
 
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [location, setLocation] = useState("");
-  const [website, setWebsite] = useState("");
-  const [isClicked, setisClicked] = useState(false);
+  const [entry, setEntry] = useState({
+    phone: "",
+    email: "",
+    location: "",
+    website: "",
+  });
+
+  const [isEditing, setIsEditing] = useState(true);
+  const [isAlerted, setIsAlerted] = useState(false);
 
   function phoneLogic(string) {
-    const regex = /^\+\d{0,17}$/;
-    if (string.at(0) === "+") {
-      if (regex.test(string)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+    return /^\+\d{0,17}$/.test(string);
   }
 
-  function handleDeleting(e) {
-    const itemId = e.target.id;
-    const isDeleting = e.key === "Backspace" || e.key === "Delete";
-    const newValue =
-      e.target.value.slice(0, e.target.selectionStart) +
-      e.target.value.slice(e.target.selectionEnd);
+  function websiteLogic(link) {
+    const length = link.length;
 
-    switch (itemId) {
-      case "phone":
-        if (isDeleting) {
-          setPhone(newValue);
-        }
-        break;
-      case "website":
-        if (isDeleting) {
-          setWebsite(newValue);
-        }
-        break;
-    }
+    if (length === 1 && link[0] === "w") return true;
+    if (length === 2 && link[1] === "w") return true;
+    if (length === 3 && link[2] === "w") return true;
+    if (length === 4 && link[3] === ".") return true;
+    if (length > 4) return true;
+
+    return false;
   }
 
-  // For submit button
-  function handleEmailUpdating() {
-    if (email.search("@") !== -1 && email.search(".") !== -1) {
-      return true;
-    } else {
-      return false;
-    }
+  function handleEmailUpdating(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  function websiteLogic(string) {
-    const length = string.length;
-
-    for (let i = 0; i < string.length; i++) {
-      if (length === 1 && string[0] === "w") {
-        return true;
-      } else if (length === 2 && string[1] === "w") {
-        return true;
-      }
-      if (length === 3 && string[2] === "w") {
-        return true;
-      }
-
-      if (length === 4 && string[3] === ".") {
-        return true;
-      }
-
-      if (length > 4) {
-        return true;
-      }
-    }
-  }
-
-  function handleWebsiteUpdating() {
+  function handleWebsiteUpdating(link) {
     const regex = /^www\.\w+\.\w+$/i;
-    console.log("website issue");
-    return regex.test(website);
+    return regex.test(link);
   }
 
   function handleTyping(e) {
-    const newValue = e.target.value;
+    const { id, value } = e.target;
 
-    switch (e.target.id) {
-      case "phone":
-        !phoneLogic(newValue) ? console.log("error") : setPhone(newValue);
-
-        break;
-      case "email":
-        setEmail(newValue);
-        break;
-
-      case "location":
-        setLocation(newValue);
-        break;
-
-      case "website":
-        websiteLogic(newValue)
-          ? setWebsite(newValue)
-          : console.log("email error");
-        break;
-    }
+    const updatedValue = id === "position" ? value.toUpperCase() : value;
+    setEntry((prev) => ({ ...prev, [id]: updatedValue }));
   }
 
   function handleClick(e) {
     e.preventDefault();
-    if (handleEmailUpdating() && handleWebsiteUpdating()) {
-      setisClicked(!isClicked);
-    }
 
-    console.log("nope");
+    setIsEditing(!isEditing);
   }
 
   return (
     <div className="contact container">
-      {isClicked ? (
+      {!isEditing && (
         <IconButton type="edit" name="contact-edit" onClick={handleClick} />
-      ) : null}
+      )}
 
       <h2>Contact</h2>
-      {isClicked ? (
-        <>
-          <div className="contact-entry">
-            <img src="/icons/contact/phone.svg" alt="Phone Icon" />
-            <p>{phone}</p>
-          </div>
 
-          <div className="contact-entry">
-            <img src="/icons/contact/email.svg" alt="Email Icon" />
-            <p>{email}</p>
-          </div>
-          <div className="contact-entry">
-            <img src="/icons/contact/location.svg" alt="Location Icon" />
-            <p>{location}</p>
-          </div>
-          <div className="contact-entry">
-            <img src="/icons/contact/website.svg" alt="Website Icon" />
-            <p>{website}</p>
-          </div>
-        </>
-      ) : (
+      {isEditing ? (
         <form noValidate>
           <label htmlFor="phone">Phone Number</label>
           <input
             type="text"
             id="phone"
             name="phone"
-            value={phone}
+            value={entry.phone}
             onChange={handleTyping}
-            onKeyDown={handleDeleting}
             placeholder="+123456789"
           />
+
           <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
             name="email"
-            value={email}
+            value={entry.email}
             onChange={handleTyping}
             placeholder="example@web.com"
           />
+
           <label htmlFor="location">Location</label>
           <input
             type="text"
             id="location"
             name="location"
-            value={location}
+            value={entry.location}
             onChange={handleTyping}
             placeholder="Bergen, NY, United States"
           />
+
           <label htmlFor="website">Website</label>
           <input
             type="url"
             id="website"
             name="website"
-            value={website}
+            value={entry.website}
             onChange={handleTyping}
-            onKeyDown={handleDeleting}
             placeholder="example.com"
           />
+
           <IconButton
             type="submit"
             name="contact-submit"
@@ -188,6 +110,15 @@ export default function Contact() {
             onClick={handleClick}
           />
         </form>
+      ) : (
+        Object.entries(entry).map(([key, value]) =>
+          value.length > 0 ? (
+            <div className="contact-entry" key={key}>
+              <img src={`/icons/contact/${key}.svg`} alt={`${key} icon`} />
+              <p>{value}</p>
+            </div>
+          ) : null
+        )
       )}
     </div>
   );

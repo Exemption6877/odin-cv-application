@@ -22,7 +22,6 @@ function Experience() {
     const inputId = e.target.dataset.id;
     const inputName = e.target.id;
     const value = e.target.value;
-    console.log(entries);
 
     setEntries(
       entries.map((entry) =>
