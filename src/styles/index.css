@@ -8,6 +8,8 @@
   --font-color: #4e4e4e;
   --secondary-font-color: #9b9b9b;
   --button-bg: #c9f2f7;
+  --left-width: 25vw;
+  --right-width: calc(100vw - var(--left-width));
 }
 
 body,
@@ -22,6 +24,21 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+button:hover {
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 1ch;
+}
+
+/* Text */
 
 h2 {
   color: var(--font-color);
@@ -38,21 +55,4 @@ p {
 
 textarea {
   resize: none;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-.invisible {
-  opacity: 0;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
 }
