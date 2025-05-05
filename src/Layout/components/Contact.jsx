@@ -1,10 +1,10 @@
 import "../../styles/Contact.css";
 import IconButton from "../../components/IconButton";
 import { useState } from "react";
+import getInputAttributes from "../../utils/inputAttributes";
+import Alert from "../../components/alert";
 
 export default function Contact() {
-  // TODO: Set rules to these inputs
-
   const [entry, setEntry] = useState({
     phone: "",
     email: "",
@@ -13,22 +13,10 @@ export default function Contact() {
   });
 
   const [isEditing, setIsEditing] = useState(true);
-  const [isAlerted, setIsAlerted] = useState(false);
+  const [errors, setErrors] = useState([]);
 
-  function phoneLogic(string) {
-    return /^\+\d{0,17}$/.test(string);
-  }
-
-  function websiteLogic(link) {
-    const length = link.length;
-
-    if (length === 1 && link[0] === "w") return true;
-    if (length === 2 && link[1] === "w") return true;
-    if (length === 3 && link[2] === "w") return true;
-    if (length === 4 && link[3] === ".") return true;
-    if (length > 4) return true;
-
-    return false;
+  function handlePhoneUpdating(number) {
+    return /^\+\d{0,17}$/.test(number);
   }
 
   function handleEmailUpdating(email) {
@@ -43,13 +31,53 @@ export default function Contact() {
   function handleTyping(e) {
     const { id, value } = e.target;
 
-    const updatedValue = id === "position" ? value.toUpperCase() : value;
+    let updatedValue = value;
+
+    if (id === "email" || id === "website") {
+      updatedValue = updatedValue.toLowerCase();
+    }
+
     setEntry((prev) => ({ ...prev, [id]: updatedValue }));
   }
 
   function handleClick(e) {
     e.preventDefault();
 
+    const currentErrors = [];
+
+    if (!handlePhoneUpdating(entry.phone) && entry.phone.length > 0) {
+      currentErrors.push("Invalid phone. Format: +123456789");
+    }
+
+    if (!handleEmailUpdating(entry.email) && entry.email.length > 0) {
+      currentErrors.push("Invalid email. Example: user@mail.com");
+    }
+
+    if (!handleWebsiteUpdating(entry.website) && entry.website.length > 0) {
+      currentErrors.push("Invalid website. Example: www.example.com");
+    }
+
+    if (
+      entry.phone.length === 0 &&
+      entry.email.length === 0 &&
+      entry.location.length === 0 &&
+      entry.website.length === 0
+    ) {
+      currentErrors.push("Please fill in at least one field.");
+    }
+
+    if (currentErrors.length > 0) {
+      setErrors(currentErrors);
+      return;
+    }
+
+    setErrors([]);
+    setEntry({
+      phone: entry.phone.trim(),
+      email: entry.email.trim(),
+      location: entry.location.trim(),
+      website: entry.website.trim(),
+    });
     setIsEditing(!isEditing);
   }
 
@@ -61,6 +89,8 @@ export default function Contact() {
 
       <h2>Contact</h2>
 
+      {errors.length > 0 ? <Alert message={errors[0]} /> : null}
+
       {isEditing ? (
         <form noValidate>
           <label htmlFor="phone">Phone Number</label>
@@ -71,6 +101,7 @@ export default function Contact() {
             value={entry.phone}
             onChange={handleTyping}
             placeholder="+123456789"
+            {...getInputAttributes()}
           />
 
           <label htmlFor="email">Email</label>
@@ -80,7 +111,8 @@ export default function Contact() {
             name="email"
             value={entry.email}
             onChange={handleTyping}
-            placeholder="example@web.com"
+            placeholder="user@mail.com"
+            {...getInputAttributes()}
           />
 
           <label htmlFor="location">Location</label>
@@ -91,6 +123,7 @@ export default function Contact() {
             value={entry.location}
             onChange={handleTyping}
             placeholder="Bergen, NY, United States"
+            {...getInputAttributes()}
           />
 
           <label htmlFor="website">Website</label>
@@ -100,7 +133,8 @@ export default function Contact() {
             name="website"
             value={entry.website}
             onChange={handleTyping}
-            placeholder="example.com"
+            placeholder="www.example.com"
+            {...getInputAttributes()}
           />
 
           <IconButton
@@ -108,6 +142,7 @@ export default function Contact() {
             name="contact-submit"
             text="Submit"
             onClick={handleClick}
+            {...getInputAttributes()}
           />
         </form>
       ) : (

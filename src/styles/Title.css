@@ -45,6 +45,7 @@ input.fullname,
 input.position {
   outline: none;
   border: none;
+  background: none;
 }
 
 .position {
