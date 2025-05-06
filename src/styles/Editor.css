@@ -25,6 +25,7 @@
   align-items: center;
   height: 100%;
   padding: 16px;
+  gap: 16px;
 }
 
 .left {
@@ -35,4 +36,3 @@
 .right {
   width: var(--right-width);
 }
-
