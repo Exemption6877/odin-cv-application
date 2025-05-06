@@ -36,3 +36,9 @@
 .right {
   width: var(--right-width);
 }
+
+.yeartoyear > .years {
+  display: flex;
+  height: 100%;
+  align-items: space-between;
+}

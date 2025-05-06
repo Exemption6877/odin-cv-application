@@ -1,6 +1,6 @@
 import "../../styles/Experience.css";
-import YearToYear from "../../components/YearToYear";
-import IconButton from "../../components/IconButton";
+import YearToYear from "../../components/Years";
+import IconButton from "../../components/Button";
 import { useState } from "react";
 import Alert from "../../components/alert";
 
@@ -159,7 +159,7 @@ function Experience() {
               ></textarea>
               <IconButton
                 type="submit"
-                name="experience-submit"
+                name="experience-submit long-button"
                 text="Submit"
                 onClick={handleClick}
               />
@@ -190,13 +190,13 @@ function Experience() {
                 <div className="button-wrapper">
                   <IconButton
                     type="edit"
-                    name="experience-edit"
+                    name="experience-edit small-button"
                     id={`experience-edit-${entry.id}`}
                     onClick={handleClick}
                   />
                   <IconButton
                     type="delete"
-                    name="experience-delete"
+                    name="experience-delete small-button"
                     id={`experience-delete-${entry.id}`}
                     onClick={handleClick}
                   />
@@ -210,7 +210,7 @@ function Experience() {
       {!isEditing ? (
         <IconButton
           type="add"
-          name="experience-add"
+          name="experience-add long-button"
           text="Add new entry"
           onClick={handleClick}
         />

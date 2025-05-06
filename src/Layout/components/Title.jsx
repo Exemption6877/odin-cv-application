@@ -1,6 +1,6 @@
 import Alert from "../../components/alert";
 import getInputAttributes from "../../utils/inputAttributes";
-import IconButton from "../../components/IconButton";
+import IconButton from "../../components/Button";
 import { useState } from "react";
 import "../../styles/Title.css";
 
@@ -94,9 +94,17 @@ export default function Title() {
       )}
 
       {isEditing ? (
-        <IconButton type="submit" name="title-submit" onClick={handleClick} />
+        <IconButton
+          type="submit"
+          name="title-submit squared-button"
+          onClick={handleClick}
+        />
       ) : (
-        <IconButton type="edit" name="title-edit" onClick={handleClick} />
+        <IconButton
+          type="edit"
+          name="title-edit squared-button"
+          onClick={handleClick}
+        />
       )}
     </div>
   );

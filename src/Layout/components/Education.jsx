@@ -1,6 +1,6 @@
 import "../../styles/Education.css";
-import YearToYear from "../../components/YearToYear";
-import IconButton from "../../components/IconButton";
+import YearToYear from "../../components/Years";
+import IconButton from "../../components/Button";
 import getInputAttributes from "../../utils/inputAttributes";
 import Alert from "../../components/alert";
 import { useState } from "react";
@@ -148,7 +148,7 @@ function Education() {
               />
               <IconButton
                 type="submit"
-                name="education-submit"
+                name="education-submit long-button"
                 text="Submit"
                 onClick={handleClick}
               />
@@ -173,14 +173,14 @@ function Education() {
             <div className="button-wrapper">
               <IconButton
                 type="edit"
-                name="education-edit"
+                name="education-edit small-button"
                 id={`education-edit-${entry.id}`}
                 value="edit"
                 onClick={handleClick}
               />
               <IconButton
                 type="delete"
-                name="education-delete"
+                name="education-delete small-button"
                 id={`education-delete-${entry.id}`}
                 onClick={handleClick}
               />
@@ -191,7 +191,7 @@ function Education() {
       {!isEditing ? (
         <IconButton
           type="add"
-          name="education-add"
+          name="education-add long-button"
           text="Add new entry"
           onClick={handleClick}
         />

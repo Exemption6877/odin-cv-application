@@ -1,6 +1,6 @@
 import Alert from "../../components/alert";
 import getInputAttributes from "../../utils/inputAttributes";
-import IconButton from "../../components/IconButton";
+import IconButton from "../../components/Button";
 import { useState } from "react";
 import "../../styles/Contact.css";
 
@@ -84,7 +84,11 @@ export default function Contact() {
   return (
     <div className="contact container">
       {!isEditing && (
-        <IconButton type="edit" name="contact-edit" onClick={handleClick} />
+        <IconButton
+          type="edit"
+          name="contact-edit small-button"
+          onClick={handleClick}
+        />
       )}
 
       <h2>Contact</h2>
@@ -139,7 +143,7 @@ export default function Contact() {
 
           <IconButton
             type="submit"
-            name="contact-submit"
+            name="contact-submit long-button"
             text="Submit"
             onClick={handleClick}
             {...getInputAttributes()}

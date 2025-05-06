@@ -1,4 +1,4 @@
-import "../styles/IconButton.css";
+import "../styles/Button.css";
 
 export default function IconButton({
   type,

@@ -1,5 +1,5 @@
 import "../../styles/Summary.css";
-import IconButton from "../../components/IconButton";
+import IconButton from "../../components/Button";
 import { useState } from "react";
 import Alert from "../../components/alert";
 
@@ -57,7 +57,7 @@ function Summary() {
           ></textarea>
           <IconButton
             type="submit"
-            name="summary-submit"
+            name="summary-submit long-button"
             text="Submit"
             onClick={handleClick}
           />
@@ -67,7 +67,7 @@ function Summary() {
           <p>{entry.summary}</p>
           <IconButton
             type="edit"
-            name="summary-edit"
+            name="summary-edit long-button"
             id={`summary-edit`}
             value="edit"
             onClick={handleClick}

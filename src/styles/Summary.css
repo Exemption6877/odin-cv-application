@@ -29,28 +29,3 @@
   font-size: 1rem;
   color: var(--placeholder-color);
 }
-
-/* Button customization */
-
-.summary-submit {
-  background-color: var(--button-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  padding: 8px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 2ch;
-  margin-top: 16px;
-}
-
-.summary-edit {
-  display: flex;
-  align-self: flex-end;
-  background-color: var(--button-bg);
-  border: none;
-  border-radius: 2ch;
-  width: 35px;
-  height: 35px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-}

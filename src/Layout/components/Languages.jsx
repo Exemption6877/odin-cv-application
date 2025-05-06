@@ -1,5 +1,5 @@
 import languagesData from "../../data/languages.json";
-import IconButton from "../../components/IconButton";
+import IconButton from "../../components/Button";
 import "../../styles/Languages.css";
 import { useState } from "react";
 import Alert from "../../components/alert";
@@ -133,7 +133,7 @@ function Languages() {
 
               <IconButton
                 type="submit"
-                name="languages-submit"
+                name="languages-submit long-button"
                 text="Submit"
                 value="submit"
                 onClick={handleClick}
@@ -149,14 +149,14 @@ function Languages() {
               <div className="button-wrapper">
                 <IconButton
                   type="edit"
-                  name="languages-edit"
+                  name="languages-edit small-button"
                   id={`languages-edit-${entry.id}`}
                   value="edit"
                   onClick={handleClick}
                 />
                 <IconButton
                   type="delete"
-                  name="languages-delete"
+                  name="languages-delete small-button"
                   id={`languages-delete-${entry.id}`}
                   value="delete"
                   onClick={handleClick}
@@ -170,7 +170,7 @@ function Languages() {
       {!isEditing ? (
         <IconButton
           type="add"
-          name="languages-add"
+          name="languages-add long-button"
           text="Add new entry"
           onClick={handleClick}
         />

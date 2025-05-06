@@ -1,4 +1,4 @@
-import IconButton from "../../components/IconButton";
+import IconButton from "../../components/Button";
 import { useState } from "react";
 import "../../styles/Skills.css";
 import Alert from "../../components/alert";
@@ -113,14 +113,14 @@ function Skills() {
                 <div className="button-wrapper">
                   <IconButton
                     type="edit"
-                    name="skills-edit"
+                    name="skills-edit small-button"
                     id={`skills-edit-${entry.id}`}
                     value="edit"
                     onClick={handleClick}
                   />
                   <IconButton
                     type="delete"
-                    name="skills-delete"
+                    name="skills-delete small-button"
                     id={`skills-delete-${entry.id}`}
                     onClick={handleClick}
                   />
@@ -133,14 +133,14 @@ function Skills() {
       {!isEditing ? (
         <IconButton
           type="add"
-          name="skills-add"
+          name="skills-add long-button"
           text="Add new entry"
           onClick={handleClick}
         />
       ) : (
         <IconButton
           type="submit"
-          name="skills-submit"
+          name="skills-submit long-button"
           text="Submit"
           onClick={handleClick}
         />

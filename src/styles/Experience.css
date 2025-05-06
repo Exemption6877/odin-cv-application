@@ -87,45 +87,6 @@
   color: var(--placeholder-color);
 }
 
-/* Button customization */
-.description-container > .button-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 4px;
-}
-
-.experience-submit,
-.experience-add {
-  background-color: var(--button-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  padding: 8px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 2ch;
-  margin-top: 16px;
-}
-
-.experience-edit,
-.experience-delete {
-  display: flex;
-  align-self: flex-end;
-  background-color: var(--button-bg);
-  border: none;
-  border-radius: 2ch;
-  width: 35px;
-  height: 35px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.yeartoyear > .years {
-  display: flex;
-  height: 100%;
-  align-items: space-between;
-}
-
 .description-output {
   align-self: center;
 }
