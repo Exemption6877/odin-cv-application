@@ -1,6 +1,7 @@
 @import url(./index.css);
 
 .title {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -71,12 +72,11 @@ input.position {
 .title button {
   position: absolute;
   background-color: var(--button-bg);
+  align-self: flex-end;
   border: none;
   border-radius: 2ch;
   width: 50px;
   height: 50px;
-  top: 80px;
-  right: 100px;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
