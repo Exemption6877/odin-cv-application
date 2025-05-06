@@ -1,1 +1,72 @@
 @import url(./index.css);
+
+.languages {
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  padding-bottom: 16px;
+}
+
+.language > ul > li {
+  font-weight: 500;
+  word-break: break-word;
+  width: 80%;
+}
+
+.language > form > label {
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+.language > form > select {
+  border: 1px var(--border-color) solid;
+  background-color: white;
+  padding-left: 1rem;
+  border-radius: 2ch;
+  text-align: center;
+}
+
+/* Button customization */
+.language > .button-wrapper {
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 4px;
+  display: none;
+}
+
+.language:hover .button-wrapper {
+  display: flex;
+}
+
+.languages-edit button {
+  background-color: var(--button-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 8px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 2ch;
+  margin-top: 16px;
+}
+
+.language > .button-wrapper > button {
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 5ch;
+  width: 30px;
+  height: 30px;
+}
+
+.languages-submit,
+.languages-add {
+  background-color: var(--button-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 8px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 2ch;
+  margin-top: 16px;
+}

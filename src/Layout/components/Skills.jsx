@@ -17,14 +17,15 @@ function Skills() {
   const [errors, setErrors] = useState([]);
 
   function handleTyping(e) {
-    const inputId = e.currentTarget.dataset.id;
-    const value = e.target.value;
+    const { id, value } = e.target;
+    const inputId = e.target.dataset.id;
 
     setErrors([]);
+
     setEntries(
-      entries.map((entry) => {
-        return entry.id === inputId ? { ...entry, skill: value } : entry;
-      })
+      entries.map((entry) =>
+        entry.id === inputId ? { ...entry, [id]: value } : entry
+      )
     );
   }
 
@@ -99,16 +100,11 @@ function Skills() {
                 <input
                   type="text"
                   name="skill"
+                  id="skill"
                   data-id={entry.id}
                   value={entry.skill}
                   placeholder="Decisive"
                   onChange={handleTyping}
-                />
-                <IconButton
-                  type="submit"
-                  name="skills-submit"
-                  text="Submit"
-                  onClick={handleClick}
                 />
               </form>
             ) : (
@@ -141,7 +137,14 @@ function Skills() {
           text="Add new entry"
           onClick={handleClick}
         />
-      ) : null}
+      ) : (
+        <IconButton
+          type="submit"
+          name="skills-submit"
+          text="Submit"
+          onClick={handleClick}
+        />
+      )}
     </div>
   );
 }

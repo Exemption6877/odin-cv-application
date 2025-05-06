@@ -104,8 +104,8 @@ function Education() {
   return (
     <div className="education container">
       <h2>Education</h2>
-      {entries.length === 0 ? <p>No entries.</p> : null}
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}
+      {entries.length === 0 ? <p>No entries.</p> : null}
 
       {entries.map((entry) =>
         isEditing === entry.id ? (

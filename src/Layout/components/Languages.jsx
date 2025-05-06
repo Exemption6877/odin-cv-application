@@ -2,6 +2,7 @@ import languagesData from "../../data/languages.json";
 import IconButton from "../../components/IconButton";
 import "../../styles/Languages.css";
 import { useState } from "react";
+import Alert from "../../components/alert";
 
 function Languages() {
   const [entries, setEntries] = useState([
@@ -15,53 +16,78 @@ function Languages() {
     entries.length > 0 ? entries[0].id : null
   );
 
+  const [errors, setErrors] = useState([]);
+
   function handleTyping(e) {
-    const inputId = e.currentTarget.dataset.id;
-    const inputName = e.target.id;
-    const value = e.target.value;
+    const { id, value } = e.target;
+    const inputId = e.target.dataset.id;
+
+    if (id === "language" || id === "level") setErrors([]);
 
     setEntries(
-      entries.map((entry) => {
-        return entry.id === inputId ? { ...entry, [inputName]: value } : entry;
-      })
+      entries.map((entry) =>
+        entry.id === inputId ? { ...entry, [id]: value } : entry
+      )
     );
   }
 
   function handleClick(e) {
     e.preventDefault();
     const { value, id } = e.currentTarget;
+    let entryId;
+    let newId;
 
-    if (value === "submit") {
-      const currentEntry = entries.find((entry) => entry.id === isEditing);
+    const currentErrors = [];
+    const current = entries.find((entry) => entry.id === isEditing);
 
-      currentEntry.language.length > 0 && currentEntry.level.length > 0
-        ? setIsEditing(null)
-        : console.log("Please choose both language and level");
-    } else if (value === "delete") {
-      const entryId = id.replace("languages-delete-", "");
-      setIsEditing(null);
-      setEntries(entries.filter((entry) => entry.id !== entryId));
-    } else if (value === "add") {
-      const newId = crypto.randomUUID();
-      setEntries([
-        ...entries,
-        {
-          id: newId,
-          language: "",
-          level: "",
-        },
-      ]);
-      setIsEditing(newId);
-    } else if (value === "edit") {
-      const entryId = id.replace("languages-edit-", "");
-      setIsEditing(entryId);
+    if (current && current.language.length === 0) {
+      currentErrors.push("Language is required.");
+    }
+
+    if (current && current.level.length === 0) {
+      currentErrors.push("Proficiency level is required.");
+    }
+
+    if (currentErrors.length > 0) {
+      setErrors(currentErrors);
+      return;
+    }
+
+    setErrors([]);
+
+    switch (value) {
+      case "submit":
+        setErrors([]);
+        setIsEditing(false);
+        break;
+      case "edit":
+        entryId = id.replace("languages-edit-", "");
+        setIsEditing(entryId);
+        break;
+      case "delete":
+        entryId = id.replace("languages-delete-", "");
+        setIsEditing(false);
+        setEntries(entries.filter((entry) => entry.id !== entryId));
+        break;
+      case "add":
+        newId = crypto.randomUUID();
+        setEntries([
+          ...entries,
+          {
+            id: newId,
+            language: "",
+            level: "",
+          },
+        ]);
+        setIsEditing(newId);
+        break;
     }
   }
 
   return (
     <div className="languages container">
       <h2>Languages</h2>
-
+      {errors.length > 0 ? <Alert message={errors[0]} /> : null}
       {entries.length === 0 ? <p>No entries.</p> : null}
 
       {entries.map((entry) => (
@@ -76,8 +102,8 @@ function Languages() {
                 value={entry.language}
                 onChange={handleTyping}
               >
-                <option disabled hidden>
-                  Please choose a language
+                <option value="" disabled hidden>
+                  Language
                 </option>
                 {languagesData.languages.map((language) => (
                   <option key={language.name} value={language.name}>
@@ -94,8 +120,8 @@ function Languages() {
                 value={entry.level}
                 onChange={handleTyping}
               >
-                <option disabled hidden>
-                  Please choose a level
+                <option value="" disabled hidden>
+                  Proficiency
                 </option>
                 <option value="beginner">Beginner</option>
                 <option value="elementary">Elementary</option>
@@ -120,26 +146,28 @@ function Languages() {
                   {entry.language} — {entry.level}
                 </li>
               </ul>
-              <IconButton
-                type="edit"
-                name="languages-edit"
-                id={`languages-edit-${entry.id}`}
-                value="edit"
-                onClick={handleClick}
-              />
-              <IconButton
-                type="delete"
-                name="languages-delete"
-                id={`languages-delete-${entry.id}`}
-                value="delete"
-                onClick={handleClick}
-              />
+              <div className="button-wrapper">
+                <IconButton
+                  type="edit"
+                  name="languages-edit"
+                  id={`languages-edit-${entry.id}`}
+                  value="edit"
+                  onClick={handleClick}
+                />
+                <IconButton
+                  type="delete"
+                  name="languages-delete"
+                  id={`languages-delete-${entry.id}`}
+                  value="delete"
+                  onClick={handleClick}
+                />
+              </div>
             </>
           )}
         </div>
       ))}
 
-      {isEditing === null ? (
+      {!isEditing ? (
         <IconButton
           type="add"
           name="languages-add"

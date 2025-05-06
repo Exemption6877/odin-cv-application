@@ -8,8 +8,9 @@
   padding-bottom: 16px;
 }
 
-li {
+.skills li {
   font-weight: 500;
+  word-break: break-word;
   width: 80%;
 }
 
