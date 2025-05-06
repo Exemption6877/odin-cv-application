@@ -49,7 +49,6 @@
 .education-entry {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px dotted black;
   padding-bottom: 16px;
 }
 
