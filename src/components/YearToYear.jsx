@@ -36,6 +36,9 @@ function YearToYear({ from, to, className, dataId, onChange }) {
             onChange(e);
           }}
         >
+          <option disabled selected hidden>
+            Start
+          </option>
           {years.map((year) => (
             <option key={year} value={year}>
               {year}
@@ -51,6 +54,9 @@ function YearToYear({ from, to, className, dataId, onChange }) {
             onChange(e);
           }}
         >
+          <option disabled selected hidden>
+            End
+          </option>
           {displayYears.map((year) => (
             <option key={year} value={year}>
               {year}

@@ -26,6 +26,10 @@ function Education() {
     const { id, value } = e.target;
     const inputId = e.target.dataset.id;
 
+    if (id === "eduName") {
+      setErrors([]);
+    }
+
     setEntries(
       entries.map((entry) =>
         entry.id === inputId ? { ...entry, [id]: value } : entry
@@ -56,6 +60,19 @@ function Education() {
     switch (value) {
       case "submit":
         setErrors([]);
+        setEntries(
+          entries.map((entry) =>
+            entry.id === current.id
+              ? {
+                  ...entry,
+                  eduName: current.eduName.trim().toUpperCase(),
+                  eduDescription: current.eduDescription.trim().toUpperCase(),
+                  eduStart: current.eduStart.trim(),
+                  eduEnd: current.eduEnd.trim(),
+                }
+              : entry
+          )
+        );
         setIsEditing(false);
         break;
       case "edit":
@@ -138,32 +155,36 @@ function Education() {
             </form>
           </div>
         ) : (
-          <div key={entry.id} className={`entry education-${entry.id}`}>
-            <IconButton
-              type="edit"
-              name="education-edit"
-              id={`education-edit-${entry.id}`}
-              value="edit"
-              onClick={handleClick}
-            />
+          <div key={entry.id} className={`education-entry`}>
             {entry.eduStart.length > 0 ? (
-              <h2>
+              <h3 className="education-entry-years">
                 {entry.eduStart} - {entry.eduEnd}
-              </h2>
+              </h3>
             ) : null}
 
-            <h2>{entry.eduName}</h2>
+            <h3 className="education-entry-name">{entry.eduName}</h3>
 
             {entry.eduDescription.length > 0 ? (
-              <p>{entry.eduDescription}</p>
+              <p className="education-entry-description">
+                {entry.eduDescription}
+              </p>
             ) : null}
 
-            <IconButton
-              type="delete"
-              name="education-delete"
-              id={`education-delete-${entry.id}`}
-              onClick={handleClick}
-            />
+            <div className="button-wrapper">
+              <IconButton
+                type="edit"
+                name="education-edit"
+                id={`education-edit-${entry.id}`}
+                value="edit"
+                onClick={handleClick}
+              />
+              <IconButton
+                type="delete"
+                name="education-delete"
+                id={`education-delete-${entry.id}`}
+                onClick={handleClick}
+              />
+            </div>
           </div>
         )
       )}

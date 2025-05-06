@@ -8,8 +8,8 @@
   --font-color: #4e4e4e;
   --secondary-font-color: #9b9b9b;
   --button-bg: #c9f2f7;
-  --left-width: 25vw;
-  --right-width: calc(100vw - var(--left-width));
+  --left-width: 25%;
+  --right-width: calc(100% - var(--left-width));
 }
 
 body,
