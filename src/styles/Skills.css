@@ -10,15 +10,41 @@
 
 li {
   font-weight: 500;
+  width: 80%;
+}
+
+.skill > form > label {
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+.skill > form > input {
+  border: 1px var(--border-color) dashed;
+  padding-left: 1rem;
+}
+
+.skill > form > input:focus {
+  border: none;
+  outline: 1px solid;
+}
+
+.skill > form > input::placeholder {
+  font-size: 1rem;
+  color: var(--placeholder-color);
 }
 
 /* Button customization */
 .skill > .button-wrapper {
-  display: flex;
   flex-direction: row;
-  align-self: flex-end;
-  gap: 8px;
+  justify-content: flex-end;
+  gap: 4px;
+  display: none;
 }
+
+.skill:hover .button-wrapper {
+  display: flex;
+}
+
 .skills-edit button {
   background-color: var(--button-bg);
   display: flex;
@@ -39,8 +65,8 @@ li {
   height: 30px;
 }
 
-.skills > button,
-form > button {
+.skills-submit,
+.skills-add {
   background-color: var(--button-bg);
   display: flex;
   justify-content: center;
