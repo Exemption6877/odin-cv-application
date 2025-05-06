@@ -69,7 +69,7 @@ function Summary() {
             type="edit"
             name="summary-edit"
             id={`summary-edit`}
-            valu="edit"
+            value="edit"
             onClick={handleClick}
           />
         </>

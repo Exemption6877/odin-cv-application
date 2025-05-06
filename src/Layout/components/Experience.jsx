@@ -2,6 +2,7 @@ import "../../styles/Experience.css";
 import YearToYear from "../../components/YearToYear";
 import IconButton from "../../components/IconButton";
 import { useState } from "react";
+import Alert from "../../components/alert";
 
 function Experience() {
   const [entries, setEntries] = useState([
@@ -18,14 +19,19 @@ function Experience() {
     entries.length > 0 ? entries[0].id : null
   );
 
+  const [errors, setErrors] = useState([]);
+
   function handleTyping(e) {
+    const { id, value } = e.target;
     const inputId = e.target.dataset.id;
-    const inputName = e.target.id;
-    const value = e.target.value;
+
+    if (id === "companyName" || id === "companyPosition") {
+      setErrors([]);
+    }
 
     setEntries(
       entries.map((entry) =>
-        entry.id === inputId ? { ...entry, [inputName]: value } : entry
+        entry.id === inputId ? { ...entry, [id]: value } : entry
       )
     );
   }
@@ -33,30 +39,67 @@ function Experience() {
   function handleClick(e) {
     e.preventDefault();
     const { value, id } = e.currentTarget;
+    let entryId;
+    let newId;
 
-    if (value === "submit") {
-      setIsEditing(null);
-    } else if (value === "delete") {
-      const entryId = id.replace("experience-delete-", "");
-      setIsEditing(null);
-      setEntries(entries.filter((entry) => entry.id !== entryId));
-    } else if (value === "add") {
-      const newId = crypto.randomUUID();
-      setEntries([
-        ...entries,
-        {
-          id: newId,
-          companyName: "",
-          companyPosition: "",
-          workDescription: "",
-          workStart: "",
-          workEnd: "",
-        },
-      ]);
-      setIsEditing(newId);
-    } else if (value === "edit") {
-      const entryId = id.replace("experience-edit-", "");
-      setIsEditing(entryId);
+    const currentErrors = [];
+    const current = entries.find((entry) => entry.id === isEditing);
+
+    if (current && current.companyName.length === 0) {
+      currentErrors.push("Please enter the company name.");
+    }
+    if (current && current.companyPosition.length === 0) {
+      currentErrors.push("Please enter your job title or position.");
+    }
+
+    if (currentErrors.length > 0) {
+      setErrors(currentErrors);
+      return;
+    }
+
+    setErrors([]);
+
+    switch (value) {
+      case "submit":
+        setErrors([]);
+        setEntries(
+          entries.map((entry) =>
+            entry.id === current.id
+              ? {
+                  ...entry,
+                  companyName: current.companyName.trim().toUpperCase(),
+                  companyPosition: current.companyPosition.trim().toUpperCase(),
+                  workDescription: current.workDescription.trim(),
+                }
+              : entry
+          )
+        );
+        setIsEditing(false);
+        break;
+      case "edit":
+        entryId = id.replace("experience-edit-", "");
+        setIsEditing(entryId);
+        break;
+      case "delete":
+        entryId = id.replace("experience-delete-", "");
+        setIsEditing(false);
+        setEntries(entries.filter((entry) => entry.id !== entryId));
+        break;
+      case "add":
+        newId = crypto.randomUUID();
+        setEntries([
+          ...entries,
+          {
+            id: newId,
+            companyName: "",
+            companyPosition: "",
+            workDescription: "",
+            workStart: "",
+            workEnd: "",
+          },
+        ]);
+        setIsEditing(newId);
+        break;
     }
   }
 
@@ -64,6 +107,8 @@ function Experience() {
     <div className="experience container">
       <h2>Work Experience</h2>
       {entries.length === 0 ? <p>No entries.</p> : null}
+      {errors.length > 0 ? <Alert message={errors[0]} /> : null}
+
       {entries.map((entry) => (
         <div key={entry.id} className="experience">
           {isEditing === entry.id ? (
@@ -93,12 +138,13 @@ function Experience() {
                   <YearToYear
                     from="workStart"
                     to="workEnd"
+                    className="experience-years"
                     dataId={entry.id}
-                    onChange={handleTyping}
                     values={{
                       workStart: entry.workStart,
                       workEnd: entry.workEnd,
                     }}
+                    onChange={handleTyping}
                   />
                 </div>
               </div>
@@ -120,29 +166,48 @@ function Experience() {
             </form>
           ) : (
             <>
-              <h2>{entry.companyName}</h2>
-              <h3>{entry.companyPosition}</h3>
-              <p>
-                {entry.workStart} - {entry.workEnd}
-              </p>
-              <p>{entry.workDescription}</p>
-              <IconButton
-                type="edit"
-                name="experience-edit"
-                id={`experience-edit-${entry.id}`}
-                onClick={handleClick}
-              />
-              <IconButton
-                type="delete"
-                name="experience-delete"
-                id={`experience-delete-${entry.id}`}
-                onClick={handleClick}
-              />
+              <div className="experience-row">
+                <div className="left-column">
+                  <p>{entry.companyName}</p>
+                  <p>{entry.companyPosition}</p>
+                </div>
+                <div className="right-column">
+                  <p>
+                    {entry.workStart && entry.workEnd
+                      ? `${entry.workStart} - ${entry.workEnd}`
+                      : "N/A"}
+                  </p>
+                </div>
+              </div>
+              <div className="description-container">
+                {entry.workDescription.length > 0 ? (
+                  <>
+                    <p className="description-output">
+                      {entry.workDescription}
+                    </p>
+                  </>
+                ) : null}
+                <div className="button-wrapper">
+                  <IconButton
+                    type="edit"
+                    name="experience-edit"
+                    id={`experience-edit-${entry.id}`}
+                    onClick={handleClick}
+                  />
+                  <IconButton
+                    type="delete"
+                    name="experience-delete"
+                    id={`experience-delete-${entry.id}`}
+                    onClick={handleClick}
+                  />
+                </div>
+              </div>
             </>
           )}
         </div>
       ))}
-      {isEditing === null ? (
+
+      {!isEditing ? (
         <IconButton
           type="add"
           name="experience-add"

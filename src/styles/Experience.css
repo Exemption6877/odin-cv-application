@@ -1,20 +1,131 @@
 @import url(./index.css);
 
-.left-column,
-.right-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.experience {
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  padding-bottom: 16px;
 }
 
 .experience-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
-.experience {
-  width: 100%;
-  height: 60%;
+.experience > form > label {
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.years {
+  display: flex;
+  justify-content: space-around;
+}
+
+.experience-years > .years {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  gap: 8px;
+}
+
+.experience-years > label {
+  font-weight: 500;
+}
+
+.experience-years > .years > select {
+  border: 1px var(--border-color) solid;
+  background-color: white;
+  padding-left: 1rem;
+  border-radius: 2ch;
+  text-align: center;
+  width: 200px;
+  align-self: flex-start;
+}
+
+.experience > form > textarea {
+  min-height: 10vh;
+  border: 1px var(--border-color) dashed;
+  border-radius: 2ch;
+  padding-left: 1rem;
+}
+
+.experience > form > textarea:focus {
+  border: none;
+  outline: 1px solid;
+}
+
+.experience > form > textarea::placeholder {
+  font-size: 1rem;
+  color: var(--placeholder-color);
+}
+
+.left-column > label {
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+.left-column > input {
+  border: 1px var(--border-color) dashed;
+  padding-left: 1rem;
+}
+
+.left-column > input:focus {
+  border: none;
+  outline: 1px solid;
+}
+
+.left-column > input::placeholder {
+  font-size: 1rem;
+  color: var(--placeholder-color);
+}
+
+/* Button customization */
+.description-container > .button-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.experience-submit,
+.experience-add {
+  background-color: var(--button-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 8px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 2ch;
+  margin-top: 16px;
+}
+
+.experience-edit,
+.experience-delete {
+  display: flex;
+  align-self: flex-end;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 2ch;
+  width: 35px;
+  height: 35px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.yeartoyear > .years {
+  display: flex;
+  height: 100%;
+  align-items: space-between;
+}
+
+.description-output {
+  align-self: center;
 }

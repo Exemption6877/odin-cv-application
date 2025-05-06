@@ -24,7 +24,7 @@ function YearToYear({ from, to, className, dataId, onChange }) {
   const displayYears = isSelected ? changedYears : toYears;
 
   return (
-    <div className={className}>
+    <div className={`${className} yeartoyear`}>
       <label htmlFor="years">Years</label>
       <div className="years">
         <select

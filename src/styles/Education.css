@@ -10,7 +10,7 @@
 
 .edu-years > .years {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 8px;
 }
 

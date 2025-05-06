@@ -123,12 +123,12 @@ function Languages() {
                 <option value="" disabled hidden>
                   Proficiency
                 </option>
-                <option value="beginner">Beginner</option>
-                <option value="elementary">Elementary</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-                <option value="fluent">Fluent</option>
-                <option value="native">Native</option>
+                <option value="●○○○○○">Beginner</option>
+                <option value="●●○○○○">Elementary</option>
+                <option value="●●●○○○">Intermediate</option>
+                <option value="●●●●○○">Advanced</option>
+                <option value="●●●●●○">Fluent</option>
+                <option value="●●●●●●">Native</option>
               </select>
 
               <IconButton
@@ -143,7 +143,7 @@ function Languages() {
             <>
               <ul>
                 <li>
-                  {entry.language} — {entry.level}
+                  {entry.language} {entry.level}
                 </li>
               </ul>
               <div className="button-wrapper">
