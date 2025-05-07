@@ -81,6 +81,18 @@ select {
   text-align: center;
 }
 
+textarea {
+  resize: none;
+  min-height: 10vh;
+  border: 1px var(--border-color) dashed;
+  border-radius: 2ch;
+}
+
+textarea:focus {
+  border: none;
+  outline: 1px solid;
+}
+
 /* Text */
 
 label {
@@ -106,8 +118,4 @@ p {
   color: var(--secondary-font-color);
   font-weight: 500;
   font-size: 0.9rem;
-}
-
-textarea {
-  resize: none;
 }
