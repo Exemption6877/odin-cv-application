@@ -60,7 +60,7 @@ export default function Title() {
   }
 
   return (
-    <div className="title component-container">
+    <div className="component-container title">
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}
 
       {isEditing ? (
@@ -89,7 +89,9 @@ export default function Title() {
       ) : (
         <>
           <h1 className="fullname">{entry.fullname}</h1>
-          <h3 className="position">{entry.position}</h3>
+          {entry.position.length > 0 ? (
+            <h3 className="position">{entry.position}</h3>
+          ) : null}
         </>
       )}
 

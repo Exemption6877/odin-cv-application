@@ -17,6 +17,7 @@ button {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   margin-top: 12px;
   cursor: pointer;
+  margin-bottom: 8px;
 }
 
 button.long-button {

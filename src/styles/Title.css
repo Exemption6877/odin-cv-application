@@ -1,8 +1,7 @@
 @import url(./index.css);
 
-.title {
+.title.component-container {
   border-top: 2px var(--border-color) solid;
-  border-bottom: 2px var(--border-color) solid;
 }
 
 .title > * {
@@ -21,8 +20,19 @@ input.position {
   background: none;
 }
 
+input.fullname:focus,
+input.position:focus {
+  outline: none;
+  border: none;
+  background: none;
+}
+
 input.fullname::placeholder {
   font-size: 4rem;
+}
+
+input.position::placeholder {
+  font-size: 2rem;
 }
 
 .fullname {
