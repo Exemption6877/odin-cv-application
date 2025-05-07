@@ -41,7 +41,7 @@ function Summary() {
   }
 
   return (
-    <div className="summary container">
+    <div className="summary component-container">
       <h2>Profile Summary</h2>
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}
 

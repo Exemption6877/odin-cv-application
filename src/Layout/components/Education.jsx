@@ -102,7 +102,7 @@ function Education() {
   }
 
   return (
-    <div className="education container">
+    <div className="education component-container">
       <h2>Education</h2>
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}
       {entries.length === 0 ? <p>No entries.</p> : null}

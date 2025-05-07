@@ -87,7 +87,7 @@ function Skills() {
     }
   }
   return (
-    <div className="skills container">
+    <div className="skills component-container">
       <h2>Skills</h2>
       {entries.length === 0 ? <p>No entries.</p> : null}
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}

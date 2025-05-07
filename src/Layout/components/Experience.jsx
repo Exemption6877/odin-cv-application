@@ -104,7 +104,7 @@ function Experience() {
   }
 
   return (
-    <div className="experience container">
+    <div className="experience component-container">
       <h2>Work Experience</h2>
       {entries.length === 0 ? <p>No entries.</p> : null}
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}

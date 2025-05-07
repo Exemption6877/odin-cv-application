@@ -85,7 +85,7 @@ function Languages() {
   }
 
   return (
-    <div className="languages container">
+    <div className="languages component-container">
       <h2>Languages</h2>
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}
       {entries.length === 0 ? <p>No entries.</p> : null}

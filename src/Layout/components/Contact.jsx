@@ -82,7 +82,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="contact container">
+    <div className="contact component-container">
       {!isEditing && (
         <IconButton
           type="edit"

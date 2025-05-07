@@ -60,7 +60,7 @@ export default function Title() {
   }
 
   return (
-    <div className="title container">
+    <div className="title component-container">
       {errors.length > 0 ? <Alert message={errors[0]} /> : null}
 
       {isEditing ? (
