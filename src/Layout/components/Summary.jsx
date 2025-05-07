@@ -67,7 +67,7 @@ function Summary() {
           <p>{entry.summary}</p>
           <IconButton
             type="edit"
-            name="summary-edit long-button"
+            name="summary-edit small-button"
             id={`summary-edit`}
             value="edit"
             onClick={handleClick}
