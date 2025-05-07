@@ -120,6 +120,7 @@ function Experience() {
                     type="text"
                     id="companyName"
                     name="companyName"
+                    placeholder="CODENEST INC."
                     data-id={entry.id}
                     onChange={handleTyping}
                     value={entry.companyName}
@@ -129,6 +130,7 @@ function Experience() {
                     type="text"
                     id="companyPosition"
                     name="companyPosition"
+                    placeholder="FRONTEND DEVELOPER"
                     data-id={entry.id}
                     onChange={handleTyping}
                     value={entry.companyPosition}
@@ -151,11 +153,12 @@ function Experience() {
 
               <label htmlFor="workDescription">Description</label>
               <textarea
-                name="workDescription"
                 id="workDescription"
+                name="workDescription"
+                placeholder="Developed and maintained SPA features using React and Redux."
                 data-id={entry.id}
-                onChange={handleTyping}
                 value={entry.workDescription}
+                onChange={handleTyping}
               ></textarea>
               <IconButton
                 type="submit"

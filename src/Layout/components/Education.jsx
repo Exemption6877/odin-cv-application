@@ -132,7 +132,7 @@ function Education() {
                 value={entry.eduName}
                 onChange={handleTyping}
                 data-id={entry.id}
-                placeholder="Harvard University"
+                placeholder="HARVARD UNIVERSITY"
                 {...getInputAttributes()}
               />
               <label htmlFor="educationDescription">Description</label>
@@ -142,7 +142,7 @@ function Education() {
                 name="eduDescription"
                 value={entry.eduDescription}
                 data-id={entry.id}
-                placeholder="Bachelor of Science in Physics"
+                placeholder="B.Sc. in Computer Science"
                 onChange={handleTyping}
                 {...getInputAttributes()}
               />

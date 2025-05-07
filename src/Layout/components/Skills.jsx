@@ -103,7 +103,7 @@ function Skills() {
                   id="skill"
                   data-id={entry.id}
                   value={entry.skill}
-                  placeholder="Decisive"
+                  placeholder="HTML5"
                   onChange={handleTyping}
                 />
               </form>
