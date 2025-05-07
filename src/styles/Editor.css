@@ -35,8 +35,9 @@
 
 .yeartoyear > .years {
   display: flex;
-  height: 100%;
+  flex-direction: column;
   align-items: space-between;
+  gap: 8px;
 }
 
 /* Components */
@@ -71,6 +72,13 @@ input:focus {
 form {
   display: flex;
   flex-direction: column;
+}
+
+select {
+  border: 1px var(--border-color) solid;
+  background-color: white;
+  border-radius: 2ch;
+  text-align: center;
 }
 
 /* Text */
