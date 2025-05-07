@@ -21,6 +21,10 @@ input.position {
   background: none;
 }
 
+input.fullname::placeholder {
+  font-size: 4rem;
+}
+
 .fullname {
   font-size: 4rem;
 }

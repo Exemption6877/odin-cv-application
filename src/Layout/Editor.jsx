@@ -5,7 +5,7 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Languages from "./components/Languages";
 import Experience from "./components/Experience";
-import "../styles/Editor.css";
+import "./../styles/Editor.css";
 
 function Editor() {
   return (

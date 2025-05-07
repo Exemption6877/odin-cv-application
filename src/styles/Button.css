@@ -3,7 +3,6 @@
 /* Global Styles */
 .button-wrapper {
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
   gap: 8px;
 }
@@ -17,9 +16,6 @@ button {
   border-radius: 2ch;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   margin-top: 12px;
-}
-
-button:hover {
   cursor: pointer;
 }
 
@@ -39,22 +35,19 @@ button.squared-button {
 }
 
 /* Title */
-
 .title button {
   position: absolute;
   align-self: flex-end;
 }
 
 /* Contact */
-
 .contact-edit {
   position: absolute;
-  top: -13px;
-  left: 95px;
+  top: 0px;
+  left: 120px;
 }
 
 /* Summary */
-
 .summary-edit {
   align-self: flex-end;
 }

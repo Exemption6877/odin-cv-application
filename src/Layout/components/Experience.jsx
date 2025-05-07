@@ -175,7 +175,7 @@ function Experience() {
                   <p>
                     {entry.workStart && entry.workEnd
                       ? `${entry.workStart} - ${entry.workEnd}`
-                      : "N/A"}
+                      : null}
                   </p>
                 </div>
               </div>
