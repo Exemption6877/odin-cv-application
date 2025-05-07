@@ -24,35 +24,3 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-button:hover {
-  cursor: pointer;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  border-radius: 1ch;
-}
-
-/* Text */
-
-h2 {
-  color: var(--font-color);
-}
-
-h3 {
-  color: var(--secondary-font-color);
-  font-weight: 200px;
-}
-
-p {
-  color: var(--secondary-font-color);
-}
-
-textarea {
-  resize: none;
-}

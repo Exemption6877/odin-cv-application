@@ -19,6 +19,10 @@ button {
   margin-top: 12px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 button.long-button {
   width: 100%;
   padding: 8px;

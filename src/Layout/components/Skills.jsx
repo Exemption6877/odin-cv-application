@@ -109,7 +109,7 @@ function Skills() {
               </form>
             ) : (
               <>
-                {entry.skill}
+                <p> {entry.skill}</p>
                 <div className="button-wrapper">
                   <IconButton
                     type="edit"

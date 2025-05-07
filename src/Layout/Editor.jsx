@@ -11,14 +11,14 @@ function Editor() {
   return (
     <div className="editor">
       <Title />
-      <div className="main container">
-        <div className="left column container">
+      <div className="main">
+        <div className="left column">
           <Contact />
           <Education />
           <Skills />
           <Languages />
         </div>
-        <div className="right column container">
+        <div className="right column">
           <Summary />
           <Experience />
         </div>
