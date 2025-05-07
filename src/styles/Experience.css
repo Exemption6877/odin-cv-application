@@ -1,5 +1,9 @@
 @import url(./index.css);
 
+.experience.component-container {
+  border: none;
+}
+
 .experience-row {
   display: flex;
   justify-content: space-between;
@@ -15,5 +19,9 @@
 }
 
 .experience-years {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   width: 200px;
 }

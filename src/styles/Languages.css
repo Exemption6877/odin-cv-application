@@ -1,5 +1,5 @@
 @import url(./index.css);
 
-.languages {
-  border-bottom: none;
+.languages.component-container {
+  border: none;
 }

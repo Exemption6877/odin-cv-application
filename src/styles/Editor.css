@@ -1,5 +1,7 @@
 @import url(./index.css);
 
+/* Main containers */
+
 .editor {
   background-color: var(--secondary-color);
   width: 1000px;
@@ -33,10 +35,13 @@
   width: var(--right-width);
 }
 
-.yeartoyear > .years {
+/* Years */
+
+.years {
   display: flex;
+  height: 100%;
   flex-direction: column;
-  align-items: space-between;
+  justify-content: space-between;
   gap: 8px;
 }
 
@@ -54,9 +59,22 @@
 }
 
 /* Input */
-input {
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+select {
   border-radius: 1ch;
+  height: 2rem;
   border: 1px var(--border-color) dashed;
+}
+
+select {
+  background-color: white;
+  text-align: center;
 }
 
 input::placeholder {
@@ -67,18 +85,6 @@ input::placeholder {
 input:focus {
   border: none;
   outline: 1px solid;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-select {
-  border: 1px var(--border-color) solid;
-  background-color: white;
-  border-radius: 2ch;
-  text-align: center;
 }
 
 textarea {
@@ -94,11 +100,6 @@ textarea:focus {
 }
 
 /* Text */
-
-label {
-  font-weight: 500;
-  padding: 4px 0;
-}
 
 h1 {
   color: var(--font-color);
@@ -118,4 +119,9 @@ p {
   color: var(--secondary-font-color);
   font-weight: 500;
   font-size: 0.9rem;
+}
+
+label {
+  font-weight: 500;
+  padding: 4px 0;
 }
