@@ -171,15 +171,19 @@ function Experience() {
             <>
               <div className="experience-row">
                 <div className="left-column">
-                  <p>{entry.companyName}</p>
-                  <p>{entry.companyPosition}</p>
+                  <h3 className="experience-company-name">
+                    {entry.companyName}
+                  </h3>
+                  <h3 className="experience-company-position">
+                    {entry.companyPosition}
+                  </h3>
                 </div>
                 <div className="right-column">
-                  <p>
+                  <h3 className="experience-output-years">
                     {entry.workStart && entry.workEnd
                       ? `${entry.workStart} - ${entry.workEnd}`
                       : null}
-                  </p>
+                  </h3>
                 </div>
               </div>
               <div className="description-container">

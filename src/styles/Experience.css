@@ -7,6 +7,7 @@
 .experience-row {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 8px;
 }
 
 .left-column {
@@ -16,6 +17,7 @@
 
 .description-output {
   align-self: center;
+  padding-left: 8px;
 }
 
 .experience-years {
@@ -24,4 +26,12 @@
   justify-content: space-between;
   height: 100%;
   width: 200px;
+}
+
+.experience-company-name {
+  font-weight: 400;
+}
+.experience-company-position,
+.experience-output-years {
+  font-weight: 300;
 }

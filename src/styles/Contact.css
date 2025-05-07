@@ -3,7 +3,6 @@
 .contact-entry {
   display: flex;
   flex-direction: row;
-  padding-left: 12px;
   gap: 8px;
 }
 

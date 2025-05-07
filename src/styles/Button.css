@@ -44,8 +44,8 @@ button.squared-button {
 /* Contact */
 .contact-edit {
   position: absolute;
-  top: 0px;
-  left: 120px;
+  align-self: flex-end;
+  top: 10px;
 }
 
 /* Summary */

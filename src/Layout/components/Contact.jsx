@@ -24,8 +24,7 @@ export default function Contact() {
   }
 
   function handleWebsiteUpdating(link) {
-    const regex = /^www\.\w+\.\w+$/i;
-    return regex.test(link);
+    return /^www\.\w+\.\w+(\/[\w\-\/]*)?$/i.test(link);
   }
 
   function handleTyping(e) {
@@ -54,7 +53,7 @@ export default function Contact() {
     }
 
     if (!handleWebsiteUpdating(entry.website) && entry.website.length > 0) {
-      currentErrors.push("Invalid website. Example: www.example.com");
+      currentErrors.push("Invalid website. Example: www.example.com/example");
     }
 
     if (

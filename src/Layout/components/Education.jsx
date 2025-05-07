@@ -157,12 +157,12 @@ function Education() {
         ) : (
           <div key={entry.id} className={`education-entry`}>
             {entry.eduStart.length > 0 ? (
-              <h3 className="education-entry-years">
+              <h3 className="education-years">
                 {entry.eduStart} - {entry.eduEnd}
               </h3>
             ) : null}
 
-            <h3 className="education-entry-name">{entry.eduName}</h3>
+            <h3 className="education-name">{entry.eduName}</h3>
 
             {entry.eduDescription.length > 0 ? (
               <p className="education-entry-description">

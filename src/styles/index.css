@@ -1,14 +1,15 @@
 :root {
   font-family: Roboto, "Times New Roman";
-  --main-color: #00e1ff;
   --secondary-color: #ffffff;
   --background-color: #e8f0cc;
-  --placeholder-color: #c0c0c0;
   --border-color: #525252;
-  --font-color: #4e4e4e;
-  --secondary-font-color: #9b9b9b;
   --button-bg: #c9f2f7;
-  --left-width: 25%;
+  /* Text */
+  --font-color: #4e4e4e;
+  --secondary-font-color: #555555;
+  --placeholder-color: #c0c0c0;
+  /* Sizing */
+  --left-width: 35%;
   --right-width: calc(100% - var(--left-width));
 }
 

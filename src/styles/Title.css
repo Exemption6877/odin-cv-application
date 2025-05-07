@@ -19,6 +19,15 @@ input.position {
   border: none;
   background: none;
   height: auto;
+  padding-left: 0;
+}
+
+input.fullname {
+  font-weight: 100;
+}
+
+input.position {
+  font-weight: 100;
 }
 
 input.fullname:focus,
@@ -30,10 +39,12 @@ input.position:focus {
 
 input.fullname::placeholder {
   font-size: 4rem;
+  font-weight: 800;
 }
 
 input.position::placeholder {
   font-size: 2rem;
+  font-weight: 300;
 }
 
 .fullname {
@@ -42,5 +53,6 @@ input.position::placeholder {
 
 .position {
   font-size: 2rem;
+  font-weight: 300;
   height: 50px;
 }
