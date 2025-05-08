@@ -1,6 +1,5 @@
 import IconButton from "../../components/Button";
 import { useState } from "react";
-import "../../styles/Skills.css";
 import Alert from "../../components/alert";
 
 function Skills() {
