@@ -4,8 +4,9 @@
 
 .editor {
   background-color: var(--secondary-color);
-  width: 1000px;
+  height: auto;
   padding: 16px;
+  margin-top: 16px;
   border-radius: 1ch;
 }
 
@@ -136,4 +137,17 @@ label {
 
 ul {
   padding-left: 20px;
+}
+
+@media (max-width: 1080px) {
+  .editor {
+    width: 720px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .editor {
+    min-width: 900px;
+    max-width: auto;
+  }
 }
