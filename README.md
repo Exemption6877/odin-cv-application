@@ -1,1 +1,3 @@
-# SImple React CV Application
+# CV Application
+
+A simple and responsive CV application built with React.
