@@ -1,7 +1,7 @@
 import "../../styles/Summary.css";
 import IconButton from "../../components/Button";
 import { useState } from "react";
-import Alert from "../../components/alert";
+import Alert from "../../components/Alert";
 
 function Summary() {
   const [entry, setEntry] = useState({
