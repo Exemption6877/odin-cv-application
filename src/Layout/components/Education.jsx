@@ -2,7 +2,7 @@ import "../../styles/Education.css";
 import YearToYear from "../../components/Years";
 import IconButton from "../../components/Button";
 import getInputAttributes from "../../utils/inputAttributes";
-import Alert from "../../components/alert";
+import Alert from "../../components/Alert";
 import { useState } from "react";
 
 function Education() {

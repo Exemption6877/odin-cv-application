@@ -2,7 +2,7 @@ import languagesData from "../../data/languages.json";
 import IconButton from "../../components/Button";
 import "../../styles/Languages.css";
 import { useState } from "react";
-import Alert from "../../components/alert";
+import Alert from "../../components/Alert";
 
 function Languages() {
   const [entries, setEntries] = useState([

@@ -2,7 +2,7 @@ import "../../styles/Experience.css";
 import YearToYear from "../../components/Years";
 import IconButton from "../../components/Button";
 import { useState } from "react";
-import Alert from "../../components/alert";
+import Alert from "../../components/Alert";
 
 function Experience() {
   const [entries, setEntries] = useState([

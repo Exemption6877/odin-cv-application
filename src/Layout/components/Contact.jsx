@@ -1,4 +1,4 @@
-import Alert from "../../components/alert";
+import Alert from "../../components/Alert";
 import getInputAttributes from "../../utils/inputAttributes";
 import IconButton from "../../components/Button";
 import { useState } from "react";
