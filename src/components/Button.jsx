@@ -44,7 +44,7 @@ export default function IconButton({
         value={type}
       >
         <img src={icon} alt={type} />
-        {text}
+        <span>{text}</span>
       </button>
     </>
   );

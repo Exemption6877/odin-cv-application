@@ -41,6 +41,20 @@ button.squared-button {
   align-self: flex-end;
 }
 
+.title-edit {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.title:hover .title-edit,
+.title:focus-within .title-edit {
+  opacity: 1;
+}
+
+.title-submit:hover img {
+  animation: rotate 0.5s ease-in-out both;
+}
+
 /* Contact */
 .contact-edit {
   position: absolute;
@@ -48,7 +62,264 @@ button.squared-button {
   top: 10px;
 }
 
+.contact-edit {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.contact:hover .contact-edit,
+.contact:focus-within .contact-edit {
+  opacity: 1;
+}
+
+.contact-submit span {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.2s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.contact-submit:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-submit img {
+  transform: translateX(30px);
+  transition: transform 0.45s ease-in-out;
+}
+
+.contact-submit:hover img {
+  transform: translateX(0);
+}
+
+/* Education */
+.education-entry .button-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.education-entry:hover .button-wrapper,
+.education-entry:focus-within .button-wrapper {
+  max-height: 100px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.education-submit span {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.2s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.education-submit:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.education-submit img {
+  transform: translateX(30px);
+  transition: transform 0.45s ease-in-out;
+}
+
+.education-submit:hover img {
+  transform: translateX(0);
+}
+
+.education-add {
+  background-color: var(--secondary-color);
+  opacity: 20%;
+  box-shadow: none;
+  transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
+
+.education-add:hover {
+  background-color: var(--button-bg);
+  opacity: 100;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Skills */
+.skill .button-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.skill:hover .button-wrapper,
+.skill:focus-within .button-wrapper {
+  max-height: 100px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-submit span {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.2s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.skills-submit:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skills-submit img {
+  transform: translateX(30px);
+  transition: transform 0.45s ease-in-out;
+}
+
+.skills-submit:hover img {
+  transform: translateX(0);
+}
+
+.skills-add {
+  background-color: var(--secondary-color);
+  opacity: 20%;
+  box-shadow: none;
+  transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
+
+.skills-add:hover {
+  background-color: var(--button-bg);
+  opacity: 100;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Languages */
+.language .button-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.language:hover .button-wrapper,
+.language:focus-within .button-wrapper {
+  max-height: 100px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.languages-submit span {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.2s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.languages-submit:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.languages-submit img {
+  transform: translateX(30px);
+  transition: transform 0.45s ease-in-out;
+}
+
+.languages-submit:hover img {
+  transform: translateX(0);
+}
+
+.languages-add {
+  background-color: var(--secondary-color);
+  opacity: 20%;
+  box-shadow: none;
+  transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
+
+.languages-add:hover {
+  background-color: var(--button-bg);
+  opacity: 100;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Summary */
 .summary-edit {
   align-self: flex-end;
+}
+
+.summary-edit {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.summary:hover .summary-edit,
+.summary:focus-within .summary-edit {
+  opacity: 1;
+}
+
+.summary-submit span {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.2s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.summary-submit:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.summary-submit img {
+  transform: translateX(30px);
+  transition: transform 0.45s ease-in-out;
+}
+
+.summary-submit:hover img {
+  transform: translateX(0);
+}
+
+/* Experience */
+
+.experience .button-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.experience:hover .button-wrapper,
+.experience:focus-within .button-wrapper {
+  max-height: 100px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-submit span {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.2s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.experience-submit:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.experience-submit img {
+  transform: translateX(30px);
+  transition: transform 0.45s ease-in-out;
+}
+
+.experience-submit:hover img {
+  transform: translateX(0);
+}
+
+.experience-add {
+  background-color: var(--secondary-color);
+  opacity: 20%;
+  box-shadow: none;
+  transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
+
+.experience-add:hover {
+  background-color: var(--button-bg);
+  opacity: 100;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
 }
