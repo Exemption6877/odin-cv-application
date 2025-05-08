@@ -24,7 +24,7 @@ export default function Contact() {
   }
 
   function handleWebsiteUpdating(link) {
-    return /^www\.\w+\.\w+(\/[\w\-\/]*)?$/i.test(link);
+    return /^www\.\w+\.\w+(\/[\w\-/]*)?$/i.test(link);
   }
 
   function handleTyping(e) {
